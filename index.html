@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .application-body {
+        max-width: 780px;
+        margin: 100px auto;
+        position: relative;
+        font-family: sans-serif;
+      }
+      :root {
+        --primary-color: #008f00;
+        --terciary-color: #fff;
+        --terciary-colorBack: #f8f8f8ec;
+      }
+      .main-head,
+      .close-tool,
+      .cards-cell,
+      .icon-cell {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+      }
+      .cards-cell {
+        gap: 15px;
+      }
+      .icon-cell {
+        justify-content: space-evenly;
+        margin: 20px;
+        padding: 3px;
+      }
+      .btn {
+        display: inline-block;
+        cursor: pointer;
+        border: none;
+      }
+      .window-btn {
+        background-image: linear-gradient(to right, #24ebc0, #52ff52);
+        font-size: 1.2rem;
+        border-radius: 25px;
+        padding: 5px 20px;
+        color: white;
+      }
+      .pro-section {
+        max-width: 760px;
+        border: 1px solid red;
+        position: absolute;
+        top: 40%;
+        left: 40%;
+        transform: translate(-30%, -10%);
+        background-color: white;
+        padding: 40px;
+        border-radius: 5px;
+        box-shadow: 0 10px 20px #0000004d;
+        z-index: 10;
+      }
+      .hidden {
+        display: none;
+      }
+      .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(3px);
+        z-index: 5;
+      }
+      .close-tool {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px;
+      }
+      .pro-card {
+        border: 1px solid #0e0e0e;
+      }
+      .card-head {
+        font-weight: 400;
+        text-align: center;
+        padding: 8px;
+        margin-top: -1px;
+        font-size: clamp(10px, 4vw, 12px);
+      }
+      .pro-card {
+        border-radius: 11px;
+      }
+      .card-head {
+        border-top-left-radius: 11px;
+        border-top-right-radius: 11px;
+        background-color: #0e0e0e;
+        color: var(--terciary-color);
+      }
+      .card-body,
+      .card-pal {
+        text-align: center;
+        padding: 2px;
+      }
+      .card-body {
+        font-size: clamp(10px, 4vw, 12px);
+      }
+      .card-pal {
+        font-size: clamp(6px, 4vw, 12px);
+      }
+      .empty {
+        background-color: #0e0e0e;
+        padding: 18px;
+        border-bottom-left-radius: 11px;
+        border-bottom-right-radius: 11px;
+      }
+      .pro-green {
+        background-color: var(--primary-color);
+      }
+      .cell-green {
+        border: 1px solid var(--primary-color);
+      }
+      .pro-head {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--primary-color);
+        text-align: center;
+      }
+      .icons {
+        border: none;
+        height: 35px;
+        width: 35px;
+        border-radius: 50%;
+      }
+      .pro-pal {
+        font-size: clamp(8px, 4vw, 14px);
+        text-align: center;
+        font-weight: 600;
+      }
+      .card-discription {
+        font-size: 12px;
+        text-align: center;
+      }
+      em {
+        font-weight: 600;
+      }
+      .btn-subscribe {
+        background-color: var(--primary-color);
+        padding: 6px 12px;
+        font-size: 1.4rem;
+        font-weight: 600;
+        text-align: center;
+        color: var(--terciary-color);
+        border-radius: 11px;
+        display: flex;
+        align-self: center;
+        justify-self: center;
+      }
+      .close-window {
+        font-size: 1.4rem;
+        border-radius: 50%;
+        padding: 8px;
+        background-color: var(--terciary-color);
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="application-body">
+      <header class="application-head">
+        <div class="main-head">
+          <head>
+            <p class="app-name">Simplified Islam</p>
+            <button class="btn window-btn">PRO</button>
+          </head>
+        </div>
+        <section class="header-section">
+          <div class="pro-section hidden">
+            <div class="close-tool">
+              <a href="#">codesmann</a>
+              <button class="btn close-window">X</button>
+            </div>
+            <h1 class="pro-head">Upgrade To Premium</h1>
+            <p class="pro-pal">Uninterrupted Acces To the Entire App</p>
+            <div class="icon-cell">
+              <button class="icons">b1</button>
+              <button class="icons">b2</button>
+              <button class="icons">b3</button>
+              <button class="icons">b4</button>
+              <button class="icons">b5</button>
+            </div>
+            <div class="cards-cell">
+              <div class="pro-card">
+                <h2 class="card-head">30% Discount</h2>
+                <h1 class="card-body">3 Month Plan</h1>
+                <p class="card-pal">Before Discount</p>
+                <div class="empty"></div>
+              </div>
+              <div class="pro-card cell-green">
+                <h2 class="card-head pro-green">Best Plans</h2>
+                <h1 class="card-body">Monthly Plan</h1>
+                <p class="card-pal">Auto Renewal</p>
+                <div class="empty pro-green"></div>
+              </div>
+              <div class="pro-card">
+                <h2 class="card-head">55% Discount</h2>
+                <h1 class="card-body">Lifetime Plan</h1>
+                <p class="card-pal">Before Discount</p>
+                <div class="empty"></div>
+              </div>
+            </div>
+            <p class="card-discription">
+              <em>Monthly Plan</em> & <em>3 Month Plan </em>are
+              <em>Auto Subscribed</em> on the next period.
+            </p>
+            <button class="btn btn-subscribe">Subscribe</button>
+          </div>
+        </section>
+      </header>
+    </section>
+    <div class="overlay hidden"></div>
+    <script>
+      "use strict";
+
+      const openWindowBtn = document.querySelector(".window-btn");
+      const closeWindowBtn = document.querySelector(".close-window");
+      const windowCard = document.querySelector(".pro-section");
+      const overlayCheck = document.querySelector(".overlay");
+
+      const allWindowActivitiesAdded = () => {
+        const openWindow = () => {
+          windowCard.classList.remove("hidden");
+          overlayCheck.classList.remove("hidden");
+        };
+        const closeWidow = () => {
+          windowCard.classList.add("hidden");
+          overlayCheck.classList.add("hidden");
+        };
+        const useOverlayClose = () => {
+          windowCard.classList.add("hidden");
+          overlayCheck.classList.add("hidden");
+        };
+        overlayCheck.addEventListener("click", useOverlayClose);
+        openWindowBtn.addEventListener("click", openWindow);
+        closeWindowBtn.addEventListener("click", closeWidow);
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") {
+            closeWidow();
+          }
+        });
+      };
+      allWindowActivitiesAdded();
+    </script>
+  </body>
+</html>
