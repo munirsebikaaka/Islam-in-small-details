@@ -100,17 +100,45 @@ const prophetName = {
   names: ["names", "names", "names", "names", "names", "names", "names"],
   translation: ["trans", "trans", "trans", "trans", "trans", "trans", "trans"],
 };
+const typesOfDhikar = {
+  dhikarList: [
+    "arabic words",
+    "arabic words",
+    "arabic words",
+    "arabic words",
+    "arabic words",
+  ],
+  times: [30, 100, 36, 200, 150],
+  savedDhikar: {
+    saved: [],
+  },
+};
+////////////////////////////////////////////////////////////////////////
 const openWindowBtn = document.querySelector(".window-btn");
 const btnAbaoutNames = document.querySelector(".about-names");
 const btnCloseNames = document.querySelector(".close-btn");
+const btnRestartDhikar = document.getElementById("restart-dhikar");
+const btnAllDhikarTogether = document.querySelector(".dhikars-list-all");
+const btnstartDhikar = document.querySelector(".start-dhikar");
 const closeWindowBtn = document.querySelector(".close-window");
+const btnOpenTasmeeCounter = document.querySelector(".tasmee-counter");
+const btnCloseDhikarWindow = document.querySelector(".close-dhikar-windows");
+const btnCloseAllDhikar = document.querySelector(".btn-close-all-dhikar");
+
+/////////////////////////////////////////////////////////////////////
 const windowCard = document.querySelector(".pro-section");
 const overlayCheck = document.querySelector(".overlay");
 const internationalTime = document.querySelector(".about-monthEn");
 const remainTime = document.querySelector(".remain");
 const secAllahNames = document.querySelector(".about-Allah-names");
+const secDhikar = document.querySelector(".about-dhikar");
 const appBody = document.querySelector(".application-body");
+const inputDhikar = document.getElementById("input-dhikar");
+const tasmeeCounterHead = document.querySelector(".tasmee-counter-head");
 
+//////////////////////////////////////////////////////////////////////////
+let time = 0;
+//////////////////////////////////////////////////////////////////////////
 const allWindowActivitiesAdded = () => {
   const openWindow = () => {
     windowCard.classList.remove("hidden");
@@ -159,27 +187,63 @@ const namesOfAllah = (obj) => {
   });
 };
 namesOfAllah(allAllahNames);
-btnAbaoutNames.addEventListener("click", () => {
-  document.querySelector(".setion-names").classList.remove("hidden");
-  appBody.classList.add("invisible");
+const allDhikar = (obj) => {
+  obj.dhikarList.forEach((el, i) => {
+    const times = obj.times[i];
+    const getHtmlStructure = `
+    <div class="about-dhikar">
+      <div>
+        <h1 class="name">${el}</h1>
+        <p class="trans-arabic">${times}</p>
+      </div>
+    </div>
+    `;
+    secDhikar.insertAdjacentHTML("beforebegin", getHtmlStructure);
+  });
+};
+////////////////////////////////////////////////////////////////////////
+function aboutWindows(params) {
+  function closeNames() {
+    document.querySelector(".setion-names").classList.add("hidden");
+    appBody.classList.remove("invisible");
+  }
+
+  function openTasmeeCounter() {
+    document.querySelector(".tasmee-counter-body").classList.remove("hidden");
+    appBody.classList.add("invisible");
+  }
+
+  function closeTasmeeCounter() {
+    document.querySelector(".tasmee-counter-body").classList.add("hidden");
+    appBody.classList.remove("invisible");
+  }
+  allDhikar(typesOfDhikar);
+  btnAbaoutNames.addEventListener("click", () => {
+    document.querySelector(".setion-names").classList.remove("hidden");
+    appBody.classList.add("invisible");
+  });
+
+  function dhikarListAll() {
+    document.querySelector(".inside-dhikar").classList.remove("hidden");
+    tasmeeCounterHead.classList.add("invisible");
+  }
+  function closeDhikarListALL() {
+    document.querySelector(".inside-dhikar").classList.add("hidden");
+    tasmeeCounterHead.classList.remove("invisible");
+  }
+  btnAllDhikarTogether.addEventListener("click", dhikarListAll);
+  btnOpenTasmeeCounter.addEventListener("click", openTasmeeCounter);
+  btnCloseNames.addEventListener("click", closeNames);
+  btnCloseDhikarWindow.addEventListener("click", closeTasmeeCounter);
+  btnCloseAllDhikar.addEventListener("click", closeDhikarListALL);
+}
+aboutWindows();
+//////////////////////////////////////////////////////////////////
+btnstartDhikar.addEventListener("click", () => {
+  time++;
+  inputDhikar.value = time;
 });
-
-function closeNames() {
-  document.querySelector(".setion-names").classList.add("hidden");
-  appBody.classList.remove("invisible");
-}
-btnCloseNames.addEventListener("click", closeNames);
-//down fuction is not yet done
-getCuurrentDate();
-function calcTime() {
-  let time = 120;
-  setInterval(() => {
-    const hour = time;
-
-    const minutes = Math.trunc(time / 60);
-    const seconds = Math.trunc(time % 60);
-    remainTime.textContent = `${minutes}:${seconds}`;
-    time--;
-  }, 1000);
-}
-// calcTime();
+btnRestartDhikar.addEventListener("click", () => {
+  time = 0;
+  inputDhikar.value = 0;
+});

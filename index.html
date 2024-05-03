@@ -128,7 +128,7 @@
           </button>
         </div>
         <div class="divisions">
-          <button class="qibla-btn">
+          <button class="qibla-btn tasmee-counter">
             <p class="divi-icon">icon</p>
             <h1 class="head-divi">tasbeeh counter</h1>
           </button>
@@ -142,6 +142,7 @@
       </main>
     </section>
     <div class="setion-names hidden">
+      <button class="btn close-btn">back</button>
       <button class="btn">Allah names</button>
       <button class="btn">Prophet names</button>
       <div class="about-Allah-names">
@@ -151,9 +152,37 @@
         </div>
         <p class="trans-eng">He is Allah besides Him no God</p>
       </div>
-      <button class="btn close-btn">back</button>
+    </div>
+    <div class="tasmee-counter-body hidden">
+      <div class="tasmee-counter-head">
+        <button class="close-dhikar-windows">back</button>
+        <div class="btn count-tasme">
+          <div>
+            <input type="number" placeholder="0" id="input-dhikar" /><br />
+            <button class="start-dhikar">press</button>
+          </div>
+          <button class="btn" id="restart-dhikar">restart</button>
+        </div>
+        <button class="btn">save</button>
+        <button class="btn dhikars-list-all">dhikar list all</button>
+      </div>
+      <!-- inside dhikars -->
+      <div class="inside-dhikar hidden">
+        <button class="btn btn-close-all-dhikar">back</button>
+        <div>
+          <button>dhikar list</button>
+          <button>saved dhikar</button>
+        </div>
+        <div class="about-dhikar">
+          <div>
+            <h1 class="name">Allah</h1>
+            <p class="trans-arabic">in arabic</p>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="overlay hidden"></div>
+
     <script src="script.js"></script>
   </body>
 </html>

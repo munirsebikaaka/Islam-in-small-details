@@ -17,6 +17,7 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
+  /* display: none; */
 }
 .cards-cell {
   gap: 15px;
@@ -165,8 +166,16 @@ em {
   align-items: center;
   justify-content: space-around;
   gap: 20px;
+  /* display: none; */
 }
 .invisible {
   opacity: 0;
 }
 /* MAIN BODY  section Allah names*/
+/* MAIN BODY  section dhikar*/
+/* .tasmee-counter {
+} */
+.count-tasme {
+  display: flex;
+  /* flex-direction: column; */
+}
