@@ -1,3 +1,8 @@
+body {
+  /* background-color: var(--main-backgroond); */
+  background-color: var(--main-backgroond);
+}
+
 .application-body {
   max-width: 780px;
   margin: 100px auto;
@@ -5,9 +10,12 @@
   font-family: sans-serif;
 }
 :root {
-  --primary-color: #008f00;
+  --primary-color: #00c281;
   --terciary-color: #fff;
-  --terciary-colorBack: #f8f8f8ec;
+  --terciary-colorBack: #f1f1f1f3;
+  --main-backgroond: #002922ea;
+  --shadow-color: #000000a9;
+  --dhikar-btn-background-color: #fff4df;
 }
 .main-head,
 .close-tool,
@@ -60,7 +68,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: #00000099;
   backdrop-filter: blur(3px);
   z-index: 5;
 }
@@ -156,25 +164,122 @@ em {
   color: black;
 }
 .times-head {
-  border: 1px solid red;
   margin: 2px;
 }
 /* MAIN BODY */
 .main-body {
+  /* width: 780px; */
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   align-items: center;
   justify-content: space-around;
   gap: 20px;
-  /* display: none; */
+  text-align: center;
+  /* margin: 10px; */
+  padding: 10px;
+  background-color: var(--terciary-colorBack);
+  box-shadow: 0 2px 6px var(--shadow-color);
+  border-radius: 11px;
+}
+/* .main-body-cell {
+  background-color: var(--terciary-colorBack);
+} */
+.qibla-btn {
+  width: 120px;
+  height: 120px;
+  border-radius: 11px;
+  background-color: var(--terciary-color);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.head-divi {
+  color: #111111;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+.divi-icon {
+  width: 40px;
+  height: 40px;
+}
+.app-name {
+  font-size: 1.4rem;
+}
+.about,
+.rise {
+  color: var(--terciary-colorBack);
+  font-size: 1.2rem;
+}
+.about,
+.app-name {
+  color: var(--primary-color);
+  font-weight: 500;
 }
 .invisible {
   opacity: 0;
 }
 /* MAIN BODY  section Allah names*/
 /* MAIN BODY  section dhikar*/
-/* .tasmee-counter {
-} */
+
+.tasmee-counter-head {
+  position: absolute;
+  top: 10%;
+  left: 15%;
+}
+.major-tasmee-counter {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding: 20px;
+  background-color: var(--terciary-color);
+  padding: 70px 30px 20px;
+  border-radius: 11px;
+}
+.close-dhikar-windows {
+  font-size: 1.4rem;
+  font-weight: 500;
+  padding: 10px;
+  border-radius: 25px;
+  margin-bottom: 100px;
+  color: var(--primary-color);
+  background-color: none;
+}
+#input-dhikar {
+  width: 150px;
+  height: 150px;
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 600;
+  border-radius: 50%;
+  border: 5px solid var(--main-backgroond);
+  background-color: var(--dhikar-btn-background-color);
+}
+.dhikar-act {
+  font-size: 1.4rem;
+  font-weight: 500;
+  padding: 10px;
+  border-radius: 25px;
+  margin: 10px;
+  color: black;
+  background-color: var(--dhikar-btn-background-color);
+}
+.dhikar-act1 {
+  font-size: 1.4rem;
+  font-weight: 500;
+  padding: 10px;
+  border-radius: 11px;
+  margin-top: 20px;
+  color: var(--primary-color);
+  background-color: var(--main-backgroond);
+}
+.dhikar-list-add-save {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+}
 .count-tasme {
   display: flex;
   /* flex-direction: column; */

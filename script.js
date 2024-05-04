@@ -124,6 +124,8 @@ const closeWindowBtn = document.querySelector(".close-window");
 const btnOpenTasmeeCounter = document.querySelector(".tasmee-counter");
 const btnCloseDhikarWindow = document.querySelector(".close-dhikar-windows");
 const btnCloseAllDhikar = document.querySelector(".btn-close-all-dhikar");
+const btnDhikarSave = document.querySelector(".btn-dhikar-save");
+const btnLeaveSavedDhikar = document.querySelector(".btn-leave-saved-dhikar");
 
 /////////////////////////////////////////////////////////////////////
 const windowCard = document.querySelector(".pro-section");
@@ -134,6 +136,8 @@ const secAllahNames = document.querySelector(".about-Allah-names");
 const secDhikar = document.querySelector(".about-dhikar");
 const appBody = document.querySelector(".application-body");
 const inputDhikar = document.getElementById("input-dhikar");
+const inputDhikarSaved = document.getElementById("saved-dhikar-input");
+const inputDhikarSavedIdUl = document.querySelector(".saved-dhikar-list-paper");
 const tasmeeCounterHead = document.querySelector(".tasmee-counter-head");
 
 //////////////////////////////////////////////////////////////////////////
@@ -201,8 +205,28 @@ const allDhikar = (obj) => {
     secDhikar.insertAdjacentHTML("beforebegin", getHtmlStructure);
   });
 };
+allDhikar(typesOfDhikar);
+
+const savedDhikarList = () => {
+  let elementBody = inputDhikarSaved;
+  const child = elementBody.value;
+  typesOfDhikar.savedDhikar.saved.push(child);
+  console.log(typesOfDhikar.savedDhikar.saved);
+  inputDhikarSavedIdUl.innerHTML += `
+              <li class="saved-dhikar-list-element">
+                <p class="el-list-child">${child}</p>
+                <p class="times-per-dhikar">3000</p>
+                <button class="btn delete-list-el">del</button>
+              </li>
+  
+  `;
+  elementBody.value = "";
+};
+document
+  .querySelector(".btn-add-dhikar-tolist")
+  .addEventListener("click", savedDhikarList);
 ////////////////////////////////////////////////////////////////////////
-function aboutWindows(params) {
+function aboutWindows() {
   function closeNames() {
     document.querySelector(".setion-names").classList.add("hidden");
     appBody.classList.remove("invisible");
@@ -217,7 +241,6 @@ function aboutWindows(params) {
     document.querySelector(".tasmee-counter-body").classList.add("hidden");
     appBody.classList.remove("invisible");
   }
-  allDhikar(typesOfDhikar);
   btnAbaoutNames.addEventListener("click", () => {
     document.querySelector(".setion-names").classList.remove("hidden");
     appBody.classList.add("invisible");
@@ -231,6 +254,16 @@ function aboutWindows(params) {
     document.querySelector(".inside-dhikar").classList.add("hidden");
     tasmeeCounterHead.classList.remove("invisible");
   }
+  function savedDhikarListAll() {
+    document.querySelector(".saved-dhikar-cell").classList.remove("hidden");
+    tasmeeCounterHead.classList.add("invisible");
+  }
+  function leaveSavedDhikar() {
+    document.querySelector(".saved-dhikar-cell").classList.add("hidden");
+    tasmeeCounterHead.classList.remove("invisible");
+  }
+  btnLeaveSavedDhikar.addEventListener("click", leaveSavedDhikar);
+  btnDhikarSave.addEventListener("click", savedDhikarListAll);
   btnAllDhikarTogether.addEventListener("click", dhikarListAll);
   btnOpenTasmeeCounter.addEventListener("click", openTasmeeCounter);
   btnCloseNames.addEventListener("click", closeNames);
