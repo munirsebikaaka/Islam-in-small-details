@@ -182,10 +182,12 @@ const namesOfAllah = (obj) => {
     <div class="about-Allah-names">
       <div>
         <h1 class="name">${el}</h1>
-        <p class="trans-arabic">in arabic</p>
-      </div>
-      <p class="trans-eng">${trans}</p>
+        <p class="trans-eng">${trans}</p>
     </div>
+    <p class="trans-arabic">in arabic</p>
+
+      </div>
+
     `;
     secAllahNames.insertAdjacentHTML("beforebegin", getHtmlStructure);
   });
@@ -196,7 +198,7 @@ const allDhikar = (obj) => {
     const times = obj.times[i];
     const getHtmlStructure = `
     <div class="about-dhikar">
-      <div>
+      <div class="dhikar-list-element">
         <h1 class="name">${el}</h1>
         <p class="trans-arabic">${times}</p>
       </div>
@@ -215,15 +217,14 @@ const savedDhikarList = () => {
   inputDhikarSavedIdUl.innerHTML += `
               <li class="saved-dhikar-list-element">
                 <p class="el-list-child">${child}</p>
-                <p class="times-per-dhikar">3000</p>
-                <button class="btn delete-list-el">del</button>
+                <button class="btn delete-list-el">Delete</button>
               </li>
   
   `;
   elementBody.value = "";
 };
 document
-  .querySelector(".btn-add-dhikar-tolist")
+  .querySelector(".btn-add-dhikar-to-list")
   .addEventListener("click", savedDhikarList);
 ////////////////////////////////////////////////////////////////////////
 function aboutWindows() {

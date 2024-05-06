@@ -131,14 +131,20 @@
     </section>
     <div class="setion-names hidden">
       <button class="btn close-btn">back</button>
-      <button class="btn">Allah Names</button>
-      <button class="btn">Prophet Names</button>
-      <div class="about-Allah-names">
-        <div>
-          <h1 class="name">Allah</h1>
-          <p class="trans-arabic">in arabic</p>
+      <div>
+        <div class="Allah-prophet-names">
+          <button class="btn all-Allah-names">Allah Names</button>
+          <button class="btn all-prophet-names">Prophet Names</button>
         </div>
-        <p class="trans-eng">He is Allah besides Him no God</p>
+        <div class="about-Allah-names-cell">
+          <div class="about-Allah-names">
+            <div>
+              <h1 class="name">Allah</h1>
+              <p class="trans-eng">He is Allah besides Him no God</p>
+            </div>
+            <p class="trans-arabic">In Arabic</p>
+          </div>
+        </div>
       </div>
     </div>
     <div class="tasmee-counter-body hidden">
@@ -147,7 +153,7 @@
         <div class="major-tasmee-counter">
           <div class="btn count-tasme">
             <div>
-              <input type="number" placeholder="0" id="input-dhikar" /><br />
+              <input type="number" placeholder="0" id="counter-dhikar" /><br />
             </div>
           </div>
           <div>
@@ -166,24 +172,30 @@
       <!-- saved dhikar -->
       <div class="saved-dhikar-cell hidden">
         <button class="btn btn-leave-saved-dhikar">back</button>
-        <label class="labeled" for="saved-dhikar-input"
-          >please write name of dhikar</label
-        >
-        <input type="text" id="saved-dhikar-input" />
-        <div class="btn saved-dhikar-action-btns">
-          <button class="btn">cancel</button>
-          <button class="btn btn-add-dhikar-tolist">ok</button>
+        <div class="saved-dhikar-head">
+          <label class="labeled" for="saved-dhikar-input"
+            >please write name of dhikar</label
+          ><br />
+          <input
+            type="text"
+            id="saved-dhikar-input"
+            class="btn-add-dhikar-to-list"
+          /><br />
+          <div class="btn saved-dhikar-action-btns">
+            <button class="btn to-list btn-add-dhikar-to-list">Cancel</button>
+            <button class="btn to-list btn-add-dhikar-to-list">Ok</button>
+          </div>
         </div>
       </div>
       <!-- dhikar seen -->
       <div class="inside-dhikar hidden">
         <button class="btn btn-close-all-dhikar">back</button>
-        <div>
-          <button class="btn">dhikar list</button>
-          <button class="btn">saved dhikar</button>
+        <div class="dhikar-list-both-cell">
+          <button class="btn dhikar-list-both">Dhikar List</button>
+          <button class="btn dhikar-list-both">Saved Dhikar</button>
         </div>
         <div class="about-dhikar">
-          <div>
+          <div class="dhikar-list-element">
             <h1 class="name">Allah</h1>
             <p class="trans-arabic">in arabic</p>
           </div>
@@ -192,7 +204,7 @@
           <li class="saved-dhikar-list-element">
             <p class="el-list-child">ameen</p>
             <p class="times-per-dhikar">3000</p>
-            <button class="btn delete-list-el">del</button>
+            <button class="btn delete-list-el">Delete</button>
           </li>
         </ul>
       </div>

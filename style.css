@@ -21,12 +21,36 @@ body {
 .close-tool,
 .cards-cell,
 .icon-cell,
-.times-head {
+.times-head,
+.saved-dhikar-list-element,
+.dhikar-list-both-cell,
+.dhikar-list-element,
+.about-Allah-names,
+.Allah-prophet-names {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  /* display: none; */
 }
+.window-btn,
+.close-window,
+.qibla-btn,
+.about-Allah-names,
+.about-Allah-names-cell,
+.saved-dhikar-head,
+.btn-add-dhikar-to-list,
+.dhikar-list-both,
+.saved-dhikar-list-element,
+.about-dhikar,
+.dhikar-list-element,
+.saved-dhikar-list-paper,
+.delete-list-el,
+.all-Allah-names,
+.all-prophet-names,
+.major-tasmee-counter,
+.pro-section {
+  background-color: var(--terciary-color);
+}
+
 .cards-cell {
   gap: 15px;
 }
@@ -45,7 +69,6 @@ body {
   font-size: 1.2rem;
   border-radius: 25px;
   padding: 5px 20px;
-  color: white;
 }
 .pro-section {
   max-width: 760px;
@@ -53,7 +76,6 @@ body {
   top: 40%;
   left: 40%;
   transform: translate(-30%, -10%);
-  background-color: white;
   padding: 40px;
   border-radius: 5px;
   box-shadow: 0 10px 20px #0000004d;
@@ -160,7 +182,6 @@ em {
   font-size: 1.4rem;
   border-radius: 50%;
   padding: 8px;
-  background-color: var(--terciary-color);
   color: black;
 }
 .times-head {
@@ -181,14 +202,11 @@ em {
   box-shadow: 0 2px 6px var(--shadow-color);
   border-radius: 11px;
 }
-/* .main-body-cell {
-  background-color: var(--terciary-colorBack);
-} */
+
 .qibla-btn {
   width: 120px;
   height: 120px;
   border-radius: 11px;
-  background-color: var(--terciary-color);
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -220,26 +238,138 @@ em {
   opacity: 0;
 }
 /* MAIN BODY  section Allah names*/
+.name,
+.saved-dhikar-head,
+.btn-add-dhikar-to-list,
+.dhikar-list-both,
+.saved-dhikar-list-element,
+.delete-list-el,
+.all-Allah-names,
+.all-prophet-names,
+.close-dhikar-windows,
+.btn-leave-saved-dhikar,
+.btn-close-all-dhikar,
+.close-btn,
+.dhikar-act,
+.dhikar-act1 {
+  background-color: white;
+  font-size: 1.4rem;
+}
+.about-Allah-names-cell,
+.about-Allah-names,
+.about-Allah-names-cell,
+.dhikar-list-both,
+.about-dhikar,
+.saved-dhikar-list-paper,
+.all-Allah-names,
+.all-prophet-names,
+.dhikar-act1 {
+  border-radius: 11px;
+}
+.about-Allah-names {
+  margin: 5px;
+  box-shadow: 0 1px 5px black;
+}
+.about-Allah-names-cell {
+  padding: 10px 5px;
+  gap: 10px;
+}
+.name {
+  font-weight: 600;
+}
+.trans-eng,
+.trans-arabic {
+  font-size: 1.2rem;
+  font-weight: 500;
+  text-transform: capitalize;
+}
 /* MAIN BODY  section dhikar*/
 
-.tasmee-counter-head {
+.tasmee-counter-head,
+.saved-dhikar-cell {
   position: absolute;
-  top: 10%;
-  left: 15%;
+  top: 20%;
+  left: 22%;
 }
+.saved-dhikar-cell {
+  top: 30%;
+  left: 8%;
+}
+#saved-dhikar-input {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid var(--primary-color);
+}
+.saved-dhikar-input:focus {
+  outline: none;
+}
+.saved-dhikar-head,
+.btn-add-dhikar-to-list,
+.dhikar-list-both {
+  padding: 10px;
+}
+.saved-dhikar-head {
+  margin-top: 40px;
+}
+.dhikar-list-both {
+  color: var(--terciary-color);
+  background-color: var(--main-backgroond);
+}
+.dhikar-list-both-cell {
+  background-color: var(--main-backgroond);
+  padding: 5px;
+}
+.saved-dhikar-action-btns {
+  display: flex;
+  justify-content: space-around;
+}
+.to-list {
+  color: var(--primary-color);
+}
+.saved-dhikar-list-element {
+  margin: 5px;
+  box-shadow: 0 1px 5px black;
+  border-radius: 8px;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+.about-dhikar {
+  padding: 5px;
+}
+.dhikar-list-element {
+  box-shadow: 0 1px 5px black;
+  font-size: 1rem;
+  margin: 5px;
+  border-radius: 11px;
+}
+.saved-dhikar-list-paper {
+  padding: 5px;
+  justify-content: space-between;
+}
+.el-list-child {
+  font-size: 1.6rem;
+}
+.delete-list-el,
+.all-Allah-names,
+.all-prophet-names {
+  font-weight: 500;
+  padding: 10px;
+}
+
 .major-tasmee-counter {
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  padding: 20px;
-  background-color: var(--terciary-color);
   padding: 70px 30px 20px;
   border-radius: 11px;
 }
-.close-dhikar-windows {
-  font-size: 1.4rem;
+.close-dhikar-windows,
+.btn-leave-saved-dhikar,
+.btn-close-all-dhikar,
+.close-btn {
   font-weight: 500;
   padding: 10px;
   border-radius: 25px;
@@ -247,7 +377,7 @@ em {
   color: var(--primary-color);
   background-color: none;
 }
-#input-dhikar {
+#counter-dhikar {
   width: 150px;
   height: 150px;
   text-align: center;
@@ -258,7 +388,6 @@ em {
   background-color: var(--dhikar-btn-background-color);
 }
 .dhikar-act {
-  font-size: 1.4rem;
   font-weight: 500;
   padding: 10px;
   border-radius: 25px;
@@ -267,10 +396,8 @@ em {
   background-color: var(--dhikar-btn-background-color);
 }
 .dhikar-act1 {
-  font-size: 1.4rem;
   font-weight: 500;
   padding: 10px;
-  border-radius: 11px;
   margin-top: 20px;
   color: var(--primary-color);
   background-color: var(--main-backgroond);
@@ -282,5 +409,4 @@ em {
 }
 .count-tasme {
   display: flex;
-  /* flex-direction: column; */
 }
