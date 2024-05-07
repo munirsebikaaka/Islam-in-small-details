@@ -16,6 +16,7 @@ body {
   --main-backgroond: #002922ea;
   --shadow-color: #000000a9;
   --dhikar-btn-background-color: #fff4df;
+  --box-shadow: #00000048;
 }
 .main-head,
 .close-tool,
@@ -26,7 +27,8 @@ body {
 .dhikar-list-both-cell,
 .dhikar-list-element,
 .about-Allah-names,
-.Allah-prophet-names {
+.Allah-prophet-names,
+.about-prophet-names {
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -49,7 +51,8 @@ body {
 .major-tasmee-counter,
 .pro-section,
 .background-kalma,
-.about-dhikar-body {
+.about-dhikar-body,
+.about-prophet-names-cell {
   background-color: var(--terciary-color);
 }
 .name,
@@ -65,7 +68,8 @@ body {
 .btn-close-all-dhikar,
 .close-btn,
 .dhikar-act,
-.dhikar-act1 {
+.dhikar-act1,
+.pro {
   font-size: 1.4rem;
 }
 .about-Allah-names-cell,
@@ -77,7 +81,8 @@ body {
 .all-Allah-names,
 .all-prophet-names,
 .dhikar-act1,
-.background-kalma {
+.background-kalma,
+.about-prophet-names {
   border-radius: 11px;
 }
 .cards-cell {
@@ -268,16 +273,22 @@ em {
 }
 /* MAIN BODY  section Allah names*/
 
-.about-Allah-names {
+.about-Allah-names,
+.about-prophet-names {
   margin: 5px;
-  box-shadow: 0 1px 5px black;
+  box-shadow: 0 1px 5px var(--box-shadow);
 }
-.about-Allah-names-cell {
+.about-Allah-names-cell,
+.about-prophet-names {
   padding: 10px 5px;
   gap: 10px;
 }
 .name {
   font-weight: 600;
+}
+.pro {
+  font-weight: 500;
+  text-transform: capitalize;
 }
 .trans-eng,
 .trans-arabic {
@@ -331,7 +342,7 @@ em {
 }
 .saved-dhikar-list-element {
   margin: 5px;
-  box-shadow: 0 1px 5px black;
+  box-shadow: 0 1px 5px var(--box-shadow);
   border-radius: 8px;
   justify-content: space-between;
   padding: 0 20px;
@@ -340,7 +351,7 @@ em {
   padding: 5px;
 }
 .dhikar-list-element {
-  box-shadow: 0 1px 5px black;
+  box-shadow: 0 1px 5px var(--box-shadow);
   font-size: 1rem;
   margin: 5px;
   border-radius: 11px;

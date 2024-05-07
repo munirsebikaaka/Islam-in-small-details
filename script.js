@@ -292,9 +292,8 @@ const allAboutProphetNames = (obj) => {
     const namesTranslation = obj.translation[i];
     const prophetNamesHTMLStructure = `
     <div class="about-prophet-names">
-    <div>
-      <h1 class="name">${el}</h1>
-      <p class="trans-eng">${namesTranslation}</p>
+      <h1 class="name pro">${el}</h1>
+      <p class="trans-eng pro">${namesTranslation}</p>
     </div>
   
   
@@ -424,7 +423,7 @@ document
         allAboutAllahNames.classList.remove("hidden");
         allAboutProphNames.classList.add("hidden");
         btnAllah.style.color = "var(--primary-color)";
-        // btnProphet.style.color = "var(--terciary-color)";
+        btnProphet.style.color = "var(--terciary-color)";
       });
     }
   });
