@@ -105,7 +105,7 @@
           <div class="divisions">
             <button class="btn qibla-btn">
               <p class="divi-icon">icon</p>
-              <h1 class="head-divi">Kalma Reading</h1>
+              <h1 class="head-divi kalma-reading-btn">Kalma Reading</h1>
             </button>
           </div>
           <div class="divisions">
@@ -133,8 +133,10 @@
       <button class="btn close-btn">back</button>
       <div>
         <div class="Allah-prophet-names">
-          <button class="btn all-Allah-names">Allah Names</button>
-          <button class="btn all-prophet-names">Prophet Names</button>
+          <button class="btn all-Allah-names Allah-names">Allah Names</button>
+          <button class="btn all-prophet-names prophet-names">
+            Prophet Names
+          </button>
         </div>
         <div class="about-Allah-names-cell">
           <div class="about-Allah-names">
@@ -143,6 +145,14 @@
               <p class="trans-eng">He is Allah besides Him no God</p>
             </div>
             <p class="trans-arabic">In Arabic</p>
+          </div>
+        </div>
+        <div class="about-prophet-names-cell hidden">
+          <div class="about-prophet-names">
+            <div>
+              <h1 class="name">prophet</h1>
+              <p class="trans-eng">He is prophet of God</p>
+            </div>
           </div>
         </div>
       </div>
@@ -182,8 +192,12 @@
             class="btn-add-dhikar-to-list"
           /><br />
           <div class="btn saved-dhikar-action-btns">
-            <button class="btn to-list btn-add-dhikar-to-list">Cancel</button>
-            <button class="btn to-list btn-add-dhikar-to-list">Ok</button>
+            <button class="btn to-list btn-add-dhikar-to-list cancel-dhikar">
+              Cancel
+            </button>
+            <button class="btn to-list save-input btn-add-dhikar-to-list">
+              Ok
+            </button>
           </div>
         </div>
       </div>
@@ -191,22 +205,43 @@
       <div class="inside-dhikar hidden">
         <button class="btn btn-close-all-dhikar">back</button>
         <div class="dhikar-list-both-cell">
-          <button class="btn dhikar-list-both">Dhikar List</button>
-          <button class="btn dhikar-list-both">Saved Dhikar</button>
+          <button class="btn dhikar-list-both unsaved dhikar-list-both-list">
+            Dhikar List
+          </button>
+          <button class="btn dhikar-list-both save dhikar-list-both-saved">
+            Saved Dhikar
+          </button>
         </div>
-        <div class="about-dhikar">
-          <div class="dhikar-list-element">
-            <h1 class="name">Allah</h1>
-            <p class="trans-arabic">in arabic</p>
+        <div class="about-dhikar-body">
+          <div class="about-dhikar">
+            <div class="dhikar-list-element">
+              <h1 class="name">Allah</h1>
+              <p class="trans-arabic">in arabic</p>
+            </div>
           </div>
         </div>
-        <ul class="saved-dhikar-list-paper">
+        <ul class="saved-dhikar-list-paper hidden">
           <li class="saved-dhikar-list-element">
             <p class="el-list-child">ameen</p>
             <p class="times-per-dhikar">3000</p>
             <button class="btn delete-list-el">Delete</button>
           </li>
         </ul>
+      </div>
+    </div>
+    <div class="all-kalma-readings-cell hidden">
+      <button class="btn close-kalma-btn">back</button>
+      <div class="background-kalma">
+        <div class="all-kalma-readings">
+          <div class="kalmas">
+            <h2 class="kalma-postion">postion</h2>
+            <h3 class="kalma-in-arabic">in arabic</h3>
+            <h3 class="translate-kalma">translation in english</h3>
+            <h2 class="kalma-in-english">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            </h2>
+          </div>
+        </div>
       </div>
     </div>
     <div class="overlay hidden"></div>
