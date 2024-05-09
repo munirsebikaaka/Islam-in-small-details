@@ -139,21 +139,61 @@ const kalmaReading = {
     " Consectetur adipisicing elit. Ea commodi officia quod ipsa perspiciatis minus. Nulla nostrum, qui consectetur mollitia, ",
   ],
 };
+const cotrolButtons = {
+  openWindowCell: ".window-btn",
+  closeWindowCell: ".close-window",
+  openNamesCell: ".about-names",
+  openDikarAllCell: ".dhikars-list-all",
+  closeDhikarCell: ".btn-close-all-dhikar",
+  openTasmeeCell: ".tasmee-counter",
+  openKalmaCell: ".kalma-reading-btn",
+  btnCloseANDOpenSemiCells: {
+    closeNames: ".close-btn",
+    restartDhikar: "restart-dhikar",
+    startDhikar: ".start-dhikar",
+    closeDhikarWindow: ".close-dhikar-windows",
+    saveDhikar: ".btn-dhikar-save",
+    leaveSaved: ".btn-leave-saved-dhikar",
+    closeKalma: ".close-kalma-btn",
+  },
+};
+const controlBodyApp = {
+  inputDhikarUl: ".saved-dhikar-list-paper",
+};
 ////////////////////////////////////////////////////////////////////////
-const openWindowBtn = document.querySelector(".window-btn");
-const btnAbaoutNames = document.querySelector(".about-names");
-const btnCloseNames = document.querySelector(".close-btn");
-const btnRestartDhikar = document.getElementById("restart-dhikar");
-const btnAllDhikarTogether = document.querySelector(".dhikars-list-all");
-const btnstartDhikar = document.querySelector(".start-dhikar");
-const closeWindowBtn = document.querySelector(".close-window");
-const btnOpenTasmeeCounter = document.querySelector(".tasmee-counter");
-const btnCloseDhikarWindow = document.querySelector(".close-dhikar-windows");
-const btnCloseAllDhikar = document.querySelector(".btn-close-all-dhikar");
-const btnDhikarSave = document.querySelector(".btn-dhikar-save");
-const btnLeaveSavedDhikar = document.querySelector(".btn-leave-saved-dhikar");
-const btnOpenKalmaReadin = document.querySelector(".kalma-reading-btn");
-const btnCloseKalma = document.querySelector(".close-kalma-btn");
+const openWindowBtn = document.querySelector(cotrolButtons.openWindowCell);
+const btnAbaoutNames = document.querySelector(cotrolButtons.openNamesCell);
+const btnAllDhikarTogether = document.querySelector(
+  cotrolButtons.openDikarAllCell
+);
+const closeWindowBtn = document.querySelector(cotrolButtons.closeWindowCell);
+const btnOpenTasmeeCounter = document.querySelector(
+  cotrolButtons.openTasmeeCell
+);
+const btnCloseAllDhikar = document.querySelector(cotrolButtons.closeDhikarCell);
+const btnOpenKalmaReadin = document.querySelector(cotrolButtons.openKalmaCell);
+///////////////////////////////////////////////////////////////////////////////
+const btnCloseNames = document.querySelector(
+  cotrolButtons.btnCloseANDOpenSemiCells.closeNames
+);
+const btnRestartDhikar = document.getElementById(
+  cotrolButtons.btnCloseANDOpenSemiCells.restartDhikar
+);
+const btnstartDhikar = document.querySelector(
+  cotrolButtons.btnCloseANDOpenSemiCells.startDhikar
+);
+const btnCloseDhikarWindow = document.querySelector(
+  cotrolButtons.btnCloseANDOpenSemiCells.closeDhikarWindow
+);
+const btnDhikarSave = document.querySelector(
+  cotrolButtons.btnCloseANDOpenSemiCells.saveDhikar
+);
+const btnLeaveSavedDhikar = document.querySelector(
+  cotrolButtons.btnCloseANDOpenSemiCells.leaveSaved
+);
+const btnCloseKalma = document.querySelector(
+  cotrolButtons.btnCloseANDOpenSemiCells.closeKalma
+);
 const saved = document.querySelector(".save");
 const unsaved = document.querySelector(".unsaved");
 const btnDeleteSavedDhikar = document.querySelector(".delete-list-el");
@@ -169,7 +209,9 @@ const secDhikar = document.querySelector(".about-dhikar");
 const appBody = document.querySelector(".application-body");
 const inputDhikar = document.getElementById("counter-dhikar");
 const inputDhikarSaved = document.getElementById("saved-dhikar-input");
-const inputDhikarSavedIdUl = document.querySelector(".saved-dhikar-list-paper");
+const inputDhikarSavedIdUl = document.querySelector(
+  controlBodyApp.inputDhikarUl
+);
 const tasmeeCounterHead = document.querySelector(".tasmee-counter-head");
 const kalmaBody = document.querySelector(".all-kalma-readings");
 const saveddhikarLISTCell = document.querySelector(".saved-dhikar-list-paper");
@@ -250,24 +292,45 @@ allDhikar(typesOfDhikar);
 
 const savedDhikarList = () => {
   let elementBody = inputDhikarSaved;
-  const child = elementBody.value;
-  typesOfDhikar.savedDhikar.saved.push(child);
+  const dhikar = elementBody.value;
+  typesOfDhikar.savedDhikar.saved.push(dhikar);
   inputDhikarSavedIdUl.innerHTML += `
               <li class="saved-dhikar-list-element">
-                <p class="el-list-child">${child}</p>
-                <button class="btn delete-list-el">Delete</button>
+                <p class="el-list-dhikar">${dhikar}</p>
+                <button class="btn delete-list-el" onclick="deleteSavedDhikar('${controlBodyApp.inputDhikarUl}', '${dhikar}')">Delete</button>
               </li>
   
   `;
   elementBody.value = "";
 };
-// function name(child) {
-//   const index = typesOfDhikar.savedDhikar.saved.indexOf(child);
-//   typesOfDhikar.savedDhikar.saved.splice(index, 1);
-// }
-// document
-//   .querySelector(".save-input")
-//   .addEventListener("click", savedDhikarList);
+
+function updateUI(arr, ulEL) {
+  let deletedUl = document.querySelector(ulEL);
+  deletedUl.innerHTML = "";
+  arr.forEach((dhikar) => {
+    deletedUl.innerHTML += `
+  <li class="saved-dhikar-list-element">
+                <p class="el-list-dhikar">${dhikar}</p>
+                <button class="btn delete-list-el" onclick="deleteSavedDhikar('${controlBodyApp.inputDhikarUl}', '${dhikar}')">Delete</button>
+              </li>
+  
+  `;
+  });
+}
+
+document.querySelector(".save-inputs ").addEventListener("click", function () {
+  savedDhikarList();
+});
+savedDhikarList();
+function deleteSavedDhikar(ulElement, dhikar) {
+  if (ulElement === controlBodyApp.inputDhikarUl) {
+    const index = typesOfDhikar.savedDhikar.saved.indexOf(dhikar);
+    console.log(index);
+    typesOfDhikar.savedDhikar.saved.splice(index, 1);
+    updateUI(typesOfDhikar.savedDhikar.saved, controlBodyApp.inputDhikarUl);
+  }
+  console.log(typesOfDhikar.savedDhikar.saved);
+}
 
 const makeKalmaPage = () => {
   kalmaReading.position.flatMap((el, i) => {
@@ -377,13 +440,7 @@ btnRestartDhikar.addEventListener("click", () => {
   time = 0;
   inputDhikar.value = 0;
 });
-// function deleteDhikar(child) {
-//   console.log(child);
-// }
-// document.querySelector(".delete-list-el").addEventListener("click", () => {
-//   typesOfDhikar.savedDhikar.saved.forEach((el) => console.log(el));
-//   console.log("true");
-// });
+
 document
   .querySelector(".dhikar-list-both-cell")
   .addEventListener("click", function (e) {
@@ -414,7 +471,7 @@ document
         allAboutAllahNames.classList.add("hidden");
         allAboutProphNames.classList.remove("hidden");
         btnProphet.style.color = "var(--primary-color)";
-        // btnAllah.style.color = "var(--terciary-color)";
+        btnAllah.style.color = "var(--terciary-color)";
       });
     } else if (e.target.classList.contains("Allah-names")) {
       const btnAllah = e.target;

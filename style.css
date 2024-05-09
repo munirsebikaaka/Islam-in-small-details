@@ -46,8 +46,6 @@ body {
 .dhikar-list-element,
 .saved-dhikar-list-paper,
 .delete-list-el,
-.all-Allah-names,
-.all-prophet-names,
 .major-tasmee-counter,
 .pro-section,
 .background-kalma,
@@ -272,6 +270,15 @@ em {
   opacity: 0;
 }
 /* MAIN BODY  section Allah names*/
+.Allah-prophet-names,
+.all-Allah-names,
+.all-prophet-names {
+  background-color: var(--main-backgroond);
+}
+.all-Allah-names,
+.all-prophet-names {
+  color: var(--terciary-color);
+}
 
 .about-Allah-names,
 .about-prophet-names {
@@ -296,6 +303,7 @@ em {
   font-weight: 500;
   text-transform: capitalize;
 }
+
 /* MAIN BODY  section dhikar*/
 
 .tasmee-counter-head,
@@ -314,7 +322,7 @@ em {
   border-right: none;
   border-bottom: 1px solid var(--primary-color);
 }
-.saved-dhikar-input:focus {
+#saved-dhikar-input:focus {
   outline: none;
 }
 .saved-dhikar-head,
