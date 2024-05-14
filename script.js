@@ -139,7 +139,32 @@ const kalmaReading = {
     " Consectetur adipisicing elit. Ea commodi officia quod ipsa perspiciatis minus. Nulla nostrum, qui consectetur mollitia, ",
   ],
 };
+const salahObj = {
+  salah: [
+    "al-Fajir",
+    "sunrise",
+    "al-Dhuhar",
+    ,
+    "al-Asar",
+    "sunset",
+    "al-Maghrid",
+    "al-Isha",
+  ],
+  timesPerSalah: [
+    "00:00",
+    "00:00",
+    "00:00",
+    "00:00",
+    "00:00",
+    "00:00",
+    "00:00",
+    "00:00",
+  ],
+  minutes: ["mints", "mints", "mints", "mints", "mints", "mints", "mints"],
+};
+
 const cotrolButtons = {
+  closeSalahBtn: ".btn-close-salah",
   openWindowCell: ".window-btn",
   closeWindowCell: ".close-window",
   openNamesCell: ".about-names",
@@ -147,6 +172,7 @@ const cotrolButtons = {
   closeDhikarCell: ".btn-close-all-dhikar",
   openTasmeeCell: ".tasmee-counter",
   openKalmaCell: ".kalma-reading-btn",
+  // openSalahCellBtn: "about-salah-time",
   btnCloseANDOpenSemiCells: {
     closeNames: ".close-btn",
     restartDhikar: "restart-dhikar",
@@ -155,12 +181,14 @@ const cotrolButtons = {
     saveDhikar: ".btn-dhikar-save",
     leaveSaved: ".btn-leave-saved-dhikar",
     closeKalma: ".close-kalma-btn",
+    deleteSavedDhikarBtn: ".delete-list-el",
+    cancelDhikarBtn: ".cancel-dhikar",
+    savedBtn: "save",
+    unsavedBtn: "unsaved",
   },
 };
-const controlBodyApp = {
-  inputDhikarUl: ".saved-dhikar-list-paper",
-};
 ////////////////////////////////////////////////////////////////////////
+const btnCloseSalah = document.querySelector(cotrolButtons.closeSalahBtn);
 const openWindowBtn = document.querySelector(cotrolButtons.openWindowCell);
 const btnAbaoutNames = document.querySelector(cotrolButtons.openNamesCell);
 const btnAllDhikarTogether = document.querySelector(
@@ -172,6 +200,9 @@ const btnOpenTasmeeCounter = document.querySelector(
 );
 const btnCloseAllDhikar = document.querySelector(cotrolButtons.closeDhikarCell);
 const btnOpenKalmaReadin = document.querySelector(cotrolButtons.openKalmaCell);
+const openSalahCell = document.querySelector(".about-salah-time");
+const btnOpenTime = document.querySelector(".mints");
+const closeTime = document.querySelector(".set-salah");
 ///////////////////////////////////////////////////////////////////////////////
 const btnCloseNames = document.querySelector(
   cotrolButtons.btnCloseANDOpenSemiCells.closeNames
@@ -194,14 +225,30 @@ const btnLeaveSavedDhikar = document.querySelector(
 const btnCloseKalma = document.querySelector(
   cotrolButtons.btnCloseANDOpenSemiCells.closeKalma
 );
-const saved = document.querySelector(".save");
-const unsaved = document.querySelector(".unsaved");
-const btnDeleteSavedDhikar = document.querySelector(".delete-list-el");
-const cancelDhikar = document.querySelector(".cancel-dhikar");
+const saved = document.querySelector(
+  cotrolButtons.btnCloseANDOpenSemiCells.savedBtn
+);
+const unsaved = document.querySelector(
+  cotrolButtons.btnCloseANDOpenSemiCells.unsavedBtn
+);
+const btnDeleteSavedDhikar = document.querySelector(
+  cotrolButtons.btnCloseANDOpenSemiCells.deleteSavedDhikarBtn
+);
+const cancelDhikar = document.querySelector(
+  cotrolButtons.btnCloseANDOpenSemiCells.cancelDhikarBtn
+);
 
 /////////////////////////////////////////////////////////////////////
-const windowCard = document.querySelector(".pro-section");
-const overlayCheck = document.querySelector(".overlay");
+const controlBodyApp = {
+  inputDhikarUl: ".saved-dhikar-list-paper",
+  windowCardCell: ".pro-section",
+  overlayCheckCell: ".overlay",
+};
+const inputDhikarSavedIdUl = document.querySelector(
+  controlBodyApp.inputDhikarUl
+);
+const windowCard = document.querySelector(controlBodyApp.windowCardCell);
+const overlayCheck = document.querySelector(controlBodyApp.overlayCheckCell);
 const internationalTime = document.querySelector(".about-monthEn");
 const remainTime = document.querySelector(".remain");
 const secAllahNames = document.querySelector(".about-Allah-names");
@@ -209,9 +256,7 @@ const secDhikar = document.querySelector(".about-dhikar");
 const appBody = document.querySelector(".application-body");
 const inputDhikar = document.getElementById("counter-dhikar");
 const inputDhikarSaved = document.getElementById("saved-dhikar-input");
-const inputDhikarSavedIdUl = document.querySelector(
-  controlBodyApp.inputDhikarUl
-);
+
 const tasmeeCounterHead = document.querySelector(".tasmee-counter-head");
 const kalmaBody = document.querySelector(".all-kalma-readings");
 const saveddhikarLISTCell = document.querySelector(".saved-dhikar-list-paper");
@@ -220,6 +265,13 @@ const allAboutAllahNames = document.querySelector(".about-Allah-names-cell");
 const allAboutProphNames = document.querySelector(".about-prophet-names-cell");
 const btnAllah = document.querySelector(".Allah-names");
 const btnProphet = document.querySelector(".prophet-names");
+const salahCell = document.querySelector(".getSalahALL");
+const salahTimeAndTons = document.querySelector(".salah-time-cell-all");
+const insideDhikar = document.querySelector(".inside-dhikar");
+const savedDhikarCell = document.querySelector(".saved-dhikar-cell");
+const allKalmaReadingCell = document.querySelector(".all-kalma-readings-cell");
+const tasmeeCounterBody = document.querySelector(".tasmee-counter-body");
+const minutes = document.querySelector(".times2");
 
 //////////////////////////////////////////////////////////////////////////
 let time = 0;
@@ -366,72 +418,119 @@ const allAboutProphetNames = (obj) => {
       .insertAdjacentHTML("beforebegin", prophetNamesHTMLStructure);
   });
 };
+
 allAboutProphetNames(prophetName);
+const salahCellFunc = (obj) => {
+  obj.salah.forEach((el, i) => {
+    const times = obj.timesPerSalah[i];
+    const getHtmlStructureOfSalah = `
+    <div class="getSalahALL">
+    <p class="icon">icon</p>
+    <div>
+      <button class="btn salah-name">${el}</button>
+      <p class="icon">${times}</p>
+    </div>
+    <button class="icon">btn</button>
+  </div>
+    `;
+    salahCell.insertAdjacentHTML("beforebegin", getHtmlStructureOfSalah);
+  });
+};
+salahCellFunc(salahObj);
+///
+const salahSettings = document.querySelector(".set-salah");
+const allSallahsAcc = document.querySelectorAll(".salah-name");
+const salahSetMsg = document.querySelector(".reminder-head");
+////
+allSallahsAcc.forEach((el) =>
+  el.addEventListener("click", function () {
+    salahSettings.classList.remove("hidden");
+    overlayCheck.classList.remove("hidden");
+    salahSetMsg.textContent = `set salat ${el.textContent} reminder`;
+  })
+);
+document.querySelectorAll(".add-salah-func").forEach((el) =>
+  el.addEventListener("click", function (e) {
+    if (!e.target.classList.contains("dont-close")) {
+      // salahSettings.classList.add("hidden");
+      console.log(e.target);
+    }
+  })
+);
+
+function chooseTime(obj) {
+  obj.forEach((el, i) => {
+    const mintsHtmlStructure = `
+    <div class="times2">
+     <p class="mint">${i + 1} ${el}</p>
+    </div>
+    
+    `;
+    minutes.insertAdjacentHTML("beforebegin", mintsHtmlStructure);
+  });
+}
+chooseTime(salahObj.minutes);
 ////////////////////////////////////////////////////////////////////////
-function aboutWindows() {
-  function closeNames() {
-    document.querySelector(".setion-names").classList.add("hidden");
-    appBody.classList.remove("invisible");
+const x = document.querySelector(".times-cell");
+const worksWithClasses = () => {
+  const sectionNames = document.querySelector(".setion-names");
+  function workingWithClassesADD(addClass, removeClass) {
+    addClass.classList.add("hidden");
+    removeClass.classList.remove("hidden");
   }
 
-  function openTasmeeCounter() {
-    document.querySelector(".tasmee-counter-body").classList.remove("hidden");
-    appBody.classList.add("invisible");
-  }
-
-  function closeTasmeeCounter() {
-    document.querySelector(".tasmee-counter-body").classList.add("hidden");
-    appBody.classList.remove("invisible");
-  }
-  btnAbaoutNames.addEventListener("click", () => {
-    document.querySelector(".setion-names").classList.remove("hidden");
-    appBody.classList.add("invisible");
+  btnAllDhikarTogether.addEventListener("click", function () {
+    workingWithClassesADD(tasmeeCounterHead, insideDhikar);
+  });
+  btnCloseSalah.addEventListener("click", function () {
+    workingWithClassesADD(salahTimeAndTons, appBody);
+  });
+  btnCloseDhikarWindow.addEventListener("click", function () {
+    workingWithClassesADD(tasmeeCounterBody, appBody);
+  });
+  btnCloseAllDhikar.addEventListener("click", function () {
+    workingWithClassesADD(insideDhikar, tasmeeCounterHead);
+  });
+  btnLeaveSavedDhikar.addEventListener("click", function () {
+    workingWithClassesADD(savedDhikarCell, tasmeeCounterHead);
   });
 
-  function dhikarListAll() {
-    document.querySelector(".inside-dhikar").classList.remove("hidden");
-    tasmeeCounterHead.classList.add("invisible");
-    unsaved.style.color = "var(--primary-color)";
-  }
-  function closeDhikarListALL() {
-    document.querySelector(".inside-dhikar").classList.add("hidden");
-    tasmeeCounterHead.classList.remove("invisible");
-  }
-  function savedDhikarListAll() {
-    document.querySelector(".saved-dhikar-cell").classList.remove("hidden");
-    tasmeeCounterHead.classList.add("invisible");
-  }
-  function leaveSavedDhikar() {
-    document.querySelector(".saved-dhikar-cell").classList.add("hidden");
-    tasmeeCounterHead.classList.remove("invisible");
-  }
-  function cancelSavedDhikar() {
-    document.querySelector(".saved-dhikar-cell").classList.add("hidden");
-    tasmeeCounterHead.classList.remove("invisible");
-  }
-  function openKalmasPage() {
-    document
-      .querySelector(".all-kalma-readings-cell")
-      .classList.remove("hidden");
-    appBody.classList.add("invisible");
-  }
-  function closeKalmasPage() {
-    document.querySelector(".all-kalma-readings-cell").classList.add("hidden");
-    appBody.classList.remove("invisible");
-  }
-  btnCloseKalma.addEventListener("click", closeKalmasPage);
-  btnOpenKalmaReadin.addEventListener("click", openKalmasPage);
-  btnLeaveSavedDhikar.addEventListener("click", leaveSavedDhikar);
-  cancelDhikar.addEventListener("click", cancelSavedDhikar);
-  btnDhikarSave.addEventListener("click", savedDhikarListAll);
-  btnAllDhikarTogether.addEventListener("click", dhikarListAll);
-  btnOpenTasmeeCounter.addEventListener("click", openTasmeeCounter);
-  btnCloseNames.addEventListener("click", closeNames);
-  btnCloseDhikarWindow.addEventListener("click", closeTasmeeCounter);
-  btnCloseAllDhikar.addEventListener("click", closeDhikarListALL);
-}
-aboutWindows();
-//////////////////////////////////////////////////////////////////
+  btnDhikarSave.addEventListener("click", function () {
+    workingWithClassesADD(tasmeeCounterHead, savedDhikarCell);
+  });
+  cancelDhikar.addEventListener("click", function () {
+    workingWithClassesADD(savedDhikarCell, tasmeeCounterHead);
+  });
+
+  openSalahCell.addEventListener("click", () => {
+    workingWithClassesADD(appBody, salahTimeAndTons);
+  });
+  //////
+  btnOpenKalmaReadin.addEventListener("click", function () {
+    workingWithClassesADD(appBody, allKalmaReadingCell);
+  });
+  btnCloseKalma.addEventListener("click", function () {
+    workingWithClassesADD(allKalmaReadingCell, appBody);
+  });
+  btnAbaoutNames.addEventListener("click", () => {
+    workingWithClassesADD(appBody, sectionNames);
+  });
+  btnCloseNames.addEventListener("click", function () {
+    workingWithClassesADD(sectionNames, appBody);
+  });
+  ///////
+  btnOpenTasmeeCounter.addEventListener("click", function () {
+    workingWithClassesADD(appBody, tasmeeCounterBody);
+  });
+  btnOpenTime.addEventListener("click", function () {
+    x.classList.remove("hidden");
+  });
+  console.log("unfished");
+  // closeTime.addEventListener("click", function () {
+  //   x.classList.add("hidden");
+  // });
+};
+worksWithClasses();
 btnstartDhikar.addEventListener("click", () => {
   time++;
   inputDhikar.value = time;

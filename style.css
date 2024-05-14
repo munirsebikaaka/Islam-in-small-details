@@ -1,5 +1,4 @@
 body {
-  /* background-color: var(--main-backgroond); */
   background-color: var(--main-backgroond);
 }
 
@@ -28,7 +27,10 @@ body {
 .dhikar-list-element,
 .about-Allah-names,
 .Allah-prophet-names,
-.about-prophet-names {
+.about-prophet-names,
+.salah-cell,
+.set-btn,
+.getSalahALL {
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -46,11 +48,15 @@ body {
 .dhikar-list-element,
 .saved-dhikar-list-paper,
 .delete-list-el,
+.times1,
 .major-tasmee-counter,
 .pro-section,
 .background-kalma,
 .about-dhikar-body,
-.about-prophet-names-cell {
+.about-prophet-names-cell,
+.set-salah,
+.getSalahALL,
+.salah-time {
   background-color: var(--terciary-color);
 }
 .name,
@@ -67,7 +73,7 @@ body {
 .close-btn,
 .dhikar-act,
 .dhikar-act1,
-.pro {
+.salah-name .pro {
   font-size: 1.4rem;
 }
 .about-Allah-names-cell,
@@ -80,8 +86,14 @@ body {
 .all-prophet-names,
 .dhikar-act1,
 .background-kalma,
-.about-prophet-names {
+.about-prophet-names,
+.getSalahALL {
   border-radius: 11px;
+}
+
+.getSalahALL,
+.set-salah {
+  box-shadow: 0 1px 5px var(--box-shadow);
 }
 .cards-cell {
   gap: 15px;
@@ -266,10 +278,11 @@ em {
   color: var(--primary-color);
   font-weight: 500;
 }
-.invisible {
-  opacity: 0;
-}
+/* .invisible {
+  display: none;
+} */
 /* MAIN BODY  section Allah names*/
+
 .Allah-prophet-names,
 .all-Allah-names,
 .all-prophet-names {
@@ -281,7 +294,9 @@ em {
 }
 
 .about-Allah-names,
-.about-prophet-names {
+.about-prophet-names,
+.about-salah-div,
+.times1 {
   margin: 5px;
   box-shadow: 0 1px 5px var(--box-shadow);
 }
@@ -460,4 +475,41 @@ em {
   font-weight: 600;
   text-align: center;
   text-transform: capitalize;
+}
+/* salah time */
+.getSalahALL {
+  padding: 5px;
+  margin: 10px;
+}
+
+.set-salah {
+  width: 350px;
+}
+.reminder-cell {
+  border-bottom: 1px solid var(--box-shadow);
+}
+.sound {
+  padding-bottom: 30px;
+}
+
+.set-btn {
+  justify-content: space-between;
+  padding: 5px;
+}
+.set-salah {
+  padding: 10px;
+  border-radius: 11px;
+  position: absolute;
+  top: 40%;
+  left: 40%;
+}
+.mints {
+  text-align: center;
+}
+.times1 {
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }

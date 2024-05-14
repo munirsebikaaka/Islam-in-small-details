@@ -74,55 +74,57 @@
         <main class="main-body">
           <div class="divisions">
             <button class="btn qibla-btn">
-              <p class="divi-icon">icon</p>
+              <p class="divi-icon"><ion-icon name="moon"></ion-icon></p>
               <h1 class="head-divi">Qibra Direction</h1>
             </button>
           </div>
           <div class="divisions">
-            <button class="btn qibla-btn">
-              <p class="divi-icon">icon</p>
+            <button class="btn qibla-btn about-salah-time">
+              <p class="divi-icon"><ion-icon name="moon"></ion-icon></p>
               <h1 class="head-divi">Salah Time</h1>
             </button>
           </div>
           <div class="divisions">
-            <button class="btn qibla-btn">
-              <p class="divi-icon">icon</p>
-              <h1 class="head-divi about-names">Allah Names</h1>
+            <button class="btn qibla-btn about-names">
+              <p class="divi-icon"><ion-icon name="moon"></ion-icon></p>
+              <h1 class="head-divi">Allah Names</h1>
             </button>
           </div>
           <div class="divisions">
             <button class="btn qibla-btn">
-              <p class="divi-icon">icon</p>
+              <p class="divi-icon"><ion-icon name="moon"></ion-icon></p>
               <h1 class="head-divi">Date Counter</h1>
             </button>
           </div>
           <div class="divisions">
             <button class="btn qibla-btn">
-              <p class="divi-icon">icon</p>
+              <p class="divi-icon"><ion-icon name="moon"></ion-icon></p>
               <h1 class="head-divi">Ramathan Karrem</h1>
             </button>
           </div>
           <div class="divisions">
             <button class="btn qibla-btn">
-              <p class="divi-icon">icon</p>
+              <p class="divi-icon"><ion-icon name="moon"></ion-icon></p>
               <h1 class="head-divi kalma-reading-btn">Kalma Reading</h1>
             </button>
           </div>
           <div class="divisions">
             <button class="btn qibla-btn">
-              <p class="divi-icon">icon</p>
+              <p class="divi-icon"><ion-icon name="moon"></ion-icon></p>
               <h1 class="head-divi">Salah Learning</h1>
             </button>
           </div>
           <div class="divisions">
             <button class="btn qibla-btn tasmee-counter">
-              <p class="divi-icon">icon</p>
+              <p class="divi-icon"><ion-icon name="moon"></ion-icon></p>
               <h1 class="head-divi">Tasbeeh Counter</h1>
             </button>
           </div>
           <div class="divisions">
             <button class="btn qibla-btn">
-              <p class="divi-icon">icon</p>
+              <p class="divi-icon">
+                <ion-icon name="moon " class="icon"></ion-icon>
+              </p>
               <h1 class="head-divi">Settings</h1>
             </button>
           </div>
@@ -236,8 +238,66 @@
         </div>
       </div>
     </div>
-    <div class="overlay hidden"></div>
-
+    <div class="salah-time-cell-all hidden">
+      <button class="btn close-btn btn-close-salah">back</button>
+      <div class="salah-time">
+        <div class="getSalahALL">
+          <p class="icon">icon</p>
+          <div>
+            <button class="btn salah-name">Allah</button>
+            <p class="icon">00:00</p>
+          </div>
+          <button class="icon">btn</button>
+        </div>
+      </div>
+    </div>
+    <div class="set-salah add-salah-func hidden">
+      <div class="reminder-cell">
+        <p class="reminder-head">reminder head</p>
+        <h1 class="reminder-time">reminder time</h1>
+        <div class="set-btn">
+          <button class="btn dont-close">
+            <input type="checkbox" />
+            pre-adhan
+          </button>
+          <button class="btn dont-close">
+            <input type="checkbox" />
+            pre-adhan
+          </button>
+        </div>
+        <button class="btn mints dont-close">btn</button>
+        <div class="times-cell hidden">
+          <div class="times1">
+            <div class="times2">
+              <p class="mint">mint</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="reminder-cell sound">
+        <h1 class="reminder-tone">reminder ringtone</h1>
+        <div class="set-btn">
+          <button class="btn dont-close">
+            <input type="checkbox" />
+            pre-adhan
+          </button>
+          <button class="btn dont-close">
+            <input type="checkbox" />
+            pre-adhan
+          </button>
+        </div>
+      </div>
+      <button class="btn">save Settings</button>
+    </div>
+    <div class="overlay hidden add-salah-func"></div>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
     <script src="script.js"></script>
   </body>
 </html>
