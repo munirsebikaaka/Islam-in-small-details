@@ -121,7 +121,7 @@
             </button>
           </div>
           <div class="divisions">
-            <button class="btn qibla-btn">
+            <button class="btn qibla-btn btn-set-app">
               <p class="divi-icon">
                 <ion-icon name="moon " class="icon"></ion-icon>
               </p>
@@ -132,7 +132,9 @@
       </div>
     </section>
     <div class="setion-names hidden">
-      <button class="btn close-btn">back</button>
+      <button class="btn close-btn">
+        &larr;Allah and Muhammad[P.B.U.H] Names
+      </button>
       <div>
         <div class="Allah-prophet-names">
           <button class="btn all-Allah-names Allah-names">Allah Names</button>
@@ -159,7 +161,7 @@
     </div>
     <div class="tasmee-counter-body hidden">
       <div class="tasmee-counter-head">
-        <button class="btn close-dhikar-windows">back</button>
+        <button class="btn close-dhikar-windows">&larr;Tasbeeh Counter</button>
         <div class="major-tasmee-counter">
           <div class="btn count-tasme">
             <div>
@@ -181,7 +183,7 @@
       <!-- inside dhikars -->
       <!-- saved dhikar -->
       <div class="saved-dhikar-cell hidden">
-        <button class="btn btn-leave-saved-dhikar">back</button>
+        <button class="btn btn-leave-saved-dhikar">&larr;Save</button>
         <div class="saved-dhikar-head">
           <label class="labeled" for="saved-dhikar-input"
             >please write name of dhikar</label
@@ -203,7 +205,9 @@
       </div>
       <!-- dhikar seen -->
       <div class="inside-dhikar hidden">
-        <button class="btn btn-close-all-dhikar">back</button>
+        <button class="btn btn-close-all-dhikar">
+          &larr;Dhikar Collection
+        </button>
         <div class="dhikar-list-both-cell">
           <button class="btn dhikar-list-both unsaved dhikar-list-both-list">
             Dhikar List
@@ -224,7 +228,7 @@
       </div>
     </div>
     <div class="all-kalma-readings-cell hidden">
-      <button class="btn close-kalma-btn">back</button>
+      <button class="btn close-kalma-btn">&larr;Six Kalmay</button>
       <div class="background-kalma">
         <div class="all-kalma-readings">
           <div class="kalmas">
@@ -239,7 +243,7 @@
       </div>
     </div>
     <div class="salah-time-cell-all hidden">
-      <button class="btn close-btn btn-close-salah">back</button>
+      <button class="btn close-btn btn-close-salah">&larr;Salah Times</button>
       <div class="salah-time">
         <div class="getSalahALL">
           <p class="icon">icon</p>
@@ -252,10 +256,10 @@
       </div>
     </div>
     <div class="set-salah add-salah-func hidden">
-      <div class="reminder-cell">
-        <p class="reminder-head">reminder head</p>
+      <div class="reminder-cell dont-close">
+        <p class="reminder-head dont-close dont-close">reminder head</p>
         <h1 class="reminder-time">reminder time</h1>
-        <div class="set-btn">
+        <div class="set-btn dont-close">
           <button class="btn dont-close">
             <input type="checkbox" />
             pre-adhan
@@ -265,29 +269,69 @@
             pre-adhan
           </button>
         </div>
-        <button class="btn mints dont-close">btn</button>
+        <button class="btn mints">btn</button>
+      </div>
+      <div class="reminder-cell sound">
         <div class="times-cell hidden">
           <div class="times1">
             <div class="times2">
-              <p class="mint">mint</p>
+              <!-- <p class="mint">mint</p> -->
+            </div>
+          </div>
+        </div>
+        <h1 class="reminder-tone dont-close">reminder ringtone</h1>
+        <div class="set-btn dont-close">
+          <button class="btn">
+            <input type="checkbox" />
+            pre-adhan
+          </button>
+          <button class="btn">
+            <input type="checkbox" />
+            pre-adhan
+          </button>
+        </div>
+      </div>
+      <button class="btn dont-close">save Settings</button>
+    </div>
+
+    <div class="app-setting hidden">
+      <button class="btn close-btn">&larr;Settings</button>
+      <div class="app-setting-bac">
+        <div class="appset-cell">
+          <div>
+            <h1 class="appset">User setting</h1>
+            <div class="aboutapp-set">
+              <div>
+                <p class="namaz">
+                  Namaz nitification
+                  <button class="btn">note</button>
+                </p>
+                <p class="namaz">
+                  use Adhan Sound
+                  <button class="btn">note</button>
+                </p>
+              </div>
+              <div>
+                <h1 class="type">Adhan type</h1>
+                <button class="btn">half</button>
+                <button class="btn">full</button>
+              </div>
+            </div>
+          </div>
+          <div class="more-settings-all">
+            <h1 class="appset">App setting</h1>
+            <div class="more-settings">
+              <div>
+                <p class="more">Remove Ads</p>
+                <p class="more">Privacy Policy</p>
+                <p class="more">More Apps</p>
+                <p class="more">Share App</p>
+                <p class="more">Rate us</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="reminder-cell sound">
-        <h1 class="reminder-tone">reminder ringtone</h1>
-        <div class="set-btn">
-          <button class="btn dont-close">
-            <input type="checkbox" />
-            pre-adhan
-          </button>
-          <button class="btn dont-close">
-            <input type="checkbox" />
-            pre-adhan
-          </button>
-        </div>
-      </div>
-      <button class="btn">save Settings</button>
     </div>
     <div class="overlay hidden add-salah-func"></div>
     <script

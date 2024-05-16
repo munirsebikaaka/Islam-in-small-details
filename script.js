@@ -160,7 +160,7 @@ const salahObj = {
     "00:00",
     "00:00",
   ],
-  minutes: ["mints", "mints", "mints", "mints", "mints", "mints", "mints"],
+  minutes: ["mints", "mints", "mints", "mints"],
 };
 
 const cotrolButtons = {
@@ -172,7 +172,6 @@ const cotrolButtons = {
   closeDhikarCell: ".btn-close-all-dhikar",
   openTasmeeCell: ".tasmee-counter",
   openKalmaCell: ".kalma-reading-btn",
-  // openSalahCellBtn: "about-salah-time",
   btnCloseANDOpenSemiCells: {
     closeNames: ".close-btn",
     restartDhikar: "restart-dhikar",
@@ -203,6 +202,8 @@ const btnOpenKalmaReadin = document.querySelector(cotrolButtons.openKalmaCell);
 const openSalahCell = document.querySelector(".about-salah-time");
 const btnOpenTime = document.querySelector(".mints");
 const closeTime = document.querySelector(".set-salah");
+const TimeCell = document.querySelector(".times-cell");
+const setUp = document.querySelector(".btn-set-app");
 ///////////////////////////////////////////////////////////////////////////////
 const btnCloseNames = document.querySelector(
   cotrolButtons.btnCloseANDOpenSemiCells.closeNames
@@ -288,6 +289,7 @@ const allWindowActivitiesAdded = () => {
   const useOverlayClose = () => {
     windowCard.classList.add("hidden");
     overlayCheck.classList.add("hidden");
+    salahSettings.classList.add("hidden");
   };
   overlayCheck.addEventListener("click", useOverlayClose);
   openWindowBtn.addEventListener("click", openWindow);
@@ -349,6 +351,7 @@ const savedDhikarList = () => {
   inputDhikarSavedIdUl.innerHTML += `
               <li class="saved-dhikar-list-element">
                 <p class="el-list-dhikar">${dhikar}</p>
+                <p class="times-per-dhikar">${inputDhikar.value}</p>
                 <button class="btn delete-list-el" onclick="deleteSavedDhikar('${controlBodyApp.inputDhikarUl}', '${dhikar}')">Delete</button>
               </li>
   
@@ -363,6 +366,7 @@ function updateUI(arr, ulEL) {
     deletedUl.innerHTML += `
   <li class="saved-dhikar-list-element">
                 <p class="el-list-dhikar">${dhikar}</p>
+                <p class="times-per-dhikar">${inputDhikar.value}</p>
                 <button class="btn delete-list-el" onclick="deleteSavedDhikar('${controlBodyApp.inputDhikarUl}', '${dhikar}')">Delete</button>
               </li>
   
@@ -451,8 +455,10 @@ allSallahsAcc.forEach((el) =>
 );
 document.querySelectorAll(".add-salah-func").forEach((el) =>
   el.addEventListener("click", function (e) {
-    if (!e.target.classList.contains("dont-close")) {
-      // salahSettings.classList.add("hidden");
+    if (e.target.classList.contains("dont-close")) {
+      salahSettings.classList.add("hidden");
+      overlayCheck.classList.add("hidden");
+
       console.log(e.target);
     }
   })
@@ -470,15 +476,19 @@ function chooseTime(obj) {
   });
 }
 chooseTime(salahObj.minutes);
-////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////
 const x = document.querySelector(".times-cell");
+const appSetCell = document.querySelector(".app-setting ");
+/////////////////////////////////////////////////////
 const worksWithClasses = () => {
   const sectionNames = document.querySelector(".setion-names");
   function workingWithClassesADD(addClass, removeClass) {
     addClass.classList.add("hidden");
     removeClass.classList.remove("hidden");
   }
-
+  setUp.addEventListener("click", () => {
+    workingWithClassesADD(appBody, appSetCell);
+  });
   btnAllDhikarTogether.addEventListener("click", function () {
     workingWithClassesADD(tasmeeCounterHead, insideDhikar);
   });
@@ -525,7 +535,10 @@ const worksWithClasses = () => {
   btnOpenTime.addEventListener("click", function () {
     x.classList.remove("hidden");
   });
-  console.log("unfished");
+  TimeCell.addEventListener("click", function () {
+    TimeCell.classList.add("hidden");
+  });
+  console.log("unfished", TimeCell.textContent);
   // closeTime.addEventListener("click", function () {
   //   x.classList.add("hidden");
   // });

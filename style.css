@@ -3,7 +3,7 @@ body {
 }
 
 .application-body {
-  max-width: 780px;
+  max-width: 100%;
   margin: 100px auto;
   position: relative;
   font-family: sans-serif;
@@ -56,7 +56,9 @@ body {
 .about-prophet-names-cell,
 .set-salah,
 .getSalahALL,
-.salah-time {
+.salah-time,
+.more-settings,
+.aboutapp-set {
   background-color: var(--terciary-color);
 }
 .name,
@@ -73,7 +75,10 @@ body {
 .close-btn,
 .dhikar-act,
 .dhikar-act1,
-.salah-name .pro {
+.salah-name .pro,
+.card-body,
+.pro-pal,
+.app-name {
   font-size: 1.4rem;
 }
 .about-Allah-names-cell,
@@ -87,13 +92,52 @@ body {
 .dhikar-act1,
 .background-kalma,
 .about-prophet-names,
-.getSalahALL {
+.getSalahALL,
+.set-salah {
   border-radius: 11px;
 }
 
 .getSalahALL,
-.set-salah {
+.set-salah,
+.pro-section,
+.dhikar-list-element,
+.main-body,
+.saved-dhikar-list-element,
+.about-Allah-names,
+.about-prophet-names,
+.about-salah-div,
+.times1,
+.more-settings,
+.aboutapp-set {
   box-shadow: 0 1px 5px var(--box-shadow);
+}
+.card-head,
+.btn-subscribe,
+.about,
+.rise,
+.all-Allah-names,
+.all-prophet-names,
+.dhikar-list-both {
+  color: var(--terciary-color);
+}
+.kalma-in-english,
+.pro-head,
+.about,
+.app-name,
+.to-list,
+.close-dhikar-windows,
+.btn-leave-saved-dhikar,
+.btn-close-all-dhikar,
+.close-btn,
+.close-kalma-btn,
+.dhikar-act1 {
+  color: var(--primary-color);
+}
+
+.card-discription,
+.pro-pal,
+.pro-head {
+  text-align: center;
 }
 .cards-cell {
   gap: 15px;
@@ -122,7 +166,6 @@ body {
   transform: translate(-30%, -10%);
   padding: 40px;
   border-radius: 5px;
-  box-shadow: 0 10px 20px #0000004d;
   z-index: 10;
 }
 .hidden {
@@ -135,9 +178,11 @@ body {
   width: 100%;
   height: 100%;
   background-color: #00000099;
-  backdrop-filter: blur(3px);
-  z-index: 5;
+  /* backdrop-filter: blur(3px); */
+  /* z-index: 5; */
+  height: 120vh;
 }
+
 .close-tool {
   display: flex;
   align-items: center;
@@ -161,16 +206,13 @@ body {
   border-top-left-radius: 11px;
   border-top-right-radius: 11px;
   background-color: #0e0e0e;
-  color: var(--terciary-color);
 }
 .card-body,
 .card-pal {
   text-align: center;
   padding: 2px;
 }
-.card-body {
-  font-size: clamp(10px, 4vw, 12px);
-}
+
 .card-pal {
   font-size: clamp(6px, 4vw, 12px);
 }
@@ -189,8 +231,6 @@ body {
 .pro-head {
   font-size: 1.2rem;
   font-weight: 600;
-  color: var(--primary-color);
-  text-align: center;
 }
 .icons {
   border: none;
@@ -199,13 +239,11 @@ body {
   border-radius: 50%;
 }
 .pro-pal {
-  font-size: clamp(8px, 4vw, 14px);
-  text-align: center;
   font-weight: 600;
 }
+
 .card-discription {
   font-size: 12px;
-  text-align: center;
 }
 em {
   font-weight: 600;
@@ -216,7 +254,6 @@ em {
   font-size: 1.4rem;
   font-weight: 600;
   text-align: center;
-  color: var(--terciary-color);
   border-radius: 11px;
   display: flex;
   align-self: center;
@@ -233,49 +270,47 @@ em {
 }
 /* MAIN BODY */
 .main-body {
-  /* width: 780px; */
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
   align-items: center;
   justify-content: space-around;
-  gap: 20px;
-  text-align: center;
-  /* margin: 10px; */
+  gap: 10px;
+  /* text-align: center; */
   padding: 10px;
   background-color: var(--terciary-colorBack);
-  box-shadow: 0 2px 6px var(--shadow-color);
   border-radius: 11px;
 }
 
 .qibla-btn {
-  width: 120px;
-  height: 120px;
+  width: 100px;
+  height: 100px;
   border-radius: 11px;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+.divisions {
+  display: flex;
+  align-self: center;
+  justify-self: center;
+}
 .head-divi {
   color: #111111;
-  font-weight: 600;
-  font-size: 1.2rem;
+  font-weight: 500;
+  font-size: 1rem;
 }
 .divi-icon {
   width: 40px;
   height: 40px;
 }
-.app-name {
-  font-size: 1.4rem;
-}
+
 .about,
 .rise {
-  color: var(--terciary-colorBack);
   font-size: 1.2rem;
 }
 .about,
 .app-name {
-  color: var(--primary-color);
   font-weight: 500;
 }
 /* .invisible {
@@ -288,17 +323,12 @@ em {
 .all-prophet-names {
   background-color: var(--main-backgroond);
 }
-.all-Allah-names,
-.all-prophet-names {
-  color: var(--terciary-color);
-}
 
 .about-Allah-names,
 .about-prophet-names,
 .about-salah-div,
 .times1 {
   margin: 5px;
-  box-shadow: 0 1px 5px var(--box-shadow);
 }
 .about-Allah-names-cell,
 .about-prophet-names {
@@ -321,16 +351,6 @@ em {
 
 /* MAIN BODY  section dhikar*/
 
-.tasmee-counter-head,
-.saved-dhikar-cell {
-  position: absolute;
-  top: 20%;
-  left: 22%;
-}
-.saved-dhikar-cell {
-  top: 30%;
-  left: 8%;
-}
 #saved-dhikar-input {
   border-top: none;
   border-left: none;
@@ -348,24 +368,20 @@ em {
 .saved-dhikar-head {
   margin-top: 40px;
 }
-.dhikar-list-both {
-  color: var(--terciary-color);
+.dhikar-list-both,
+.dhikar-list-both-cell {
   background-color: var(--main-backgroond);
 }
 .dhikar-list-both-cell {
-  background-color: var(--main-backgroond);
   padding: 5px;
 }
 .saved-dhikar-action-btns {
   display: flex;
   justify-content: space-around;
 }
-.to-list {
-  color: var(--primary-color);
-}
+
 .saved-dhikar-list-element {
   margin: 5px;
-  box-shadow: 0 1px 5px var(--box-shadow);
   border-radius: 8px;
   justify-content: space-between;
   padding: 0 20px;
@@ -373,8 +389,8 @@ em {
 .about-dhikar {
   padding: 5px;
 }
+
 .dhikar-list-element {
-  box-shadow: 0 1px 5px var(--box-shadow);
   font-size: 1rem;
   margin: 5px;
   border-radius: 11px;
@@ -410,9 +426,8 @@ em {
   font-weight: 500;
   padding: 10px;
   border-radius: 25px;
-  margin-bottom: 100px;
-  color: var(--primary-color);
-  background-color: none;
+  margin-bottom: 50px;
+  background-color: var(--main-backgroond);
 }
 #counter-dhikar {
   width: 150px;
@@ -436,7 +451,6 @@ em {
   font-weight: 500;
   padding: 10px;
   margin-top: 20px;
-  color: var(--primary-color);
   background-color: var(--main-backgroond);
 }
 .dhikar-list-add-save {
@@ -446,6 +460,16 @@ em {
 }
 .count-tasme {
   display: flex;
+}
+.tasmee-counter-head,
+.saved-dhikar-cell {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.tasmee-counter-head {
+  top: 45%;
 }
 /* kalma-reading */
 
@@ -457,7 +481,6 @@ em {
   padding-bottom: 30px;
   font-size: 1.4rem;
   font-weight: 500;
-  color: var(--primary-color);
 }
 .translate-kalma {
   font-weight: 400;
@@ -496,13 +519,7 @@ em {
   justify-content: space-between;
   padding: 5px;
 }
-.set-salah {
-  padding: 10px;
-  border-radius: 11px;
-  position: absolute;
-  top: 40%;
-  left: 40%;
-}
+
 .mints {
   text-align: center;
 }
@@ -512,4 +529,43 @@ em {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+.set-salah,
+.times-cell {
+  max-width: 300px;
+  padding: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+
+.times-cell {
+  overflow: none;
+  top: 70%;
+}
+/* SETTINGS */
+.appset-cell {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  justify-content: space-around;
+  align-items: center;
+  gap: 50px;
+  padding: 10px;
+  border: 1px solid red;
+  margin-bottom: 90px;
+}
+.more-settings,
+.aboutapp-set {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
+.appset {
+  text-align: center;
+}
+.app-setting-bac {
+  background-color: #faf8f8;
 }
