@@ -301,14 +301,12 @@ const allWindowActivitiesAdded = () => {
   });
 };
 allWindowActivitiesAdded();
+//////////////////////////////////////////////////////////
 function getCuurrentDate() {
   const now = new Date();
-  const date = String(now.getDate()).padStart(2, 0);
-  const month = String(now.getMonth() + 1).padStart(2, 0);
-  const year = now.getFullYear();
-  //   internationalTime.textContent = `${date}/${month}/${year}`;
   internationalTime.textContent = new Intl.DateTimeFormat().format(now);
 }
+getCuurrentDate();
 //////////////////////////////////////////////////////////
 const namesOfAllah = (obj) => {
   obj.names.forEach((el, i) => {
@@ -596,3 +594,66 @@ document
       });
     }
   });
+const timeLeft = document.querySelector(".remain");
+const displayCurentTime = document.querySelector(".curent-time");
+console.log(displayCurentTime.textContent);
+function getCurentTime() {
+  setInterval(function () {
+    const now = new Date();
+    const hour = String(now.getHours()).padStart(2, 0);
+    const minutes = String(now.getMinutes()).padStart(2, 0);
+    const seconds = String(now.getSeconds()).padStart(2, 0);
+    displayCurentTime.textContent = `${hour}:${minutes}:${seconds}`;
+    if (minutes === "4") alert("its time for swallat Isha");
+  }, 1000);
+}
+getCurentTime();
+let FirstTime = 4;
+let secTime = 3;
+let thirdTime = 5;
+let fourthTime = 2;
+let fifthTime = 4;
+function tryKeepCodeDry(time, clearedFuction, calledFunction, message) {
+  let minutesCount = Math.trunc(time / 60);
+  let secondsCount = Math.trunc(time % 60);
+  timeLeft.textContent = `${minutesCount}:${secondsCount}`;
+  if (time < 1) {
+    clearInterval(clearedFuction);
+    calledFunction();
+    console.log(message);
+  }
+}
+function fifthTimeIn() {
+  const int5 = setInterval(function () {
+    tryKeepCodeDry(fifthTime, int5, null, "fith time over");
+    fifthTime--;
+  }, 1000);
+}
+
+function forthTimeIn() {
+  const int4 = setInterval(function () {
+    tryKeepCodeDry(fourthTime, int4, fifthTimeIn, "forth time over");
+    fourthTime--;
+  }, 1000);
+}
+
+function thirdTimeIn() {
+  const int3 = setInterval(function () {
+    tryKeepCodeDry(thirdTime, int3, forthTimeIn, "third time over");
+    thirdTime--;
+  }, 1000);
+}
+function na() {
+  const int2 = setInterval(function () {
+    tryKeepCodeDry(secTime, int2, thirdTimeIn, "second time over");
+    secTime--;
+  }, 1000);
+}
+
+function makeCounter() {
+  const int = setInterval(function () {
+    tryKeepCodeDry(FirstTime, int, na, "first time over");
+    FirstTime--;
+  }, 1000);
+}
+makeCounter();
