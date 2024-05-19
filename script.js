@@ -273,10 +273,12 @@ const savedDhikarCell = document.querySelector(".saved-dhikar-cell");
 const allKalmaReadingCell = document.querySelector(".all-kalma-readings-cell");
 const tasmeeCounterBody = document.querySelector(".tasmee-counter-body");
 const minutes = document.querySelector(".times2");
+const steps = document.querySelectorAll(".step-cell");
+const btnRight = document.querySelector(".slide--right");
+const btnLeft = document.querySelector(".slide--left");
 
-//////////////////////////////////////////////////////////////////////////
 let time = 0;
-//////////////////////////////////////////////////////////////////////////
+
 const allWindowActivitiesAdded = () => {
   const openWindow = () => {
     windowCard.classList.remove("hidden");
@@ -301,43 +303,45 @@ const allWindowActivitiesAdded = () => {
   });
 };
 allWindowActivitiesAdded();
-//////////////////////////////////////////////////////////
+
 function getCuurrentDate() {
   const now = new Date();
   internationalTime.textContent = new Intl.DateTimeFormat().format(now);
 }
 getCuurrentDate();
-//////////////////////////////////////////////////////////
+
 const namesOfAllah = (obj) => {
   obj.names.forEach((el, i) => {
     const trans = obj.translation[i];
-    const getHtmlStructure = `
+    secAllahNames.insertAdjacentHTML(
+      "beforebegin",
+      `
     <div class="about-Allah-names">
       <div>
         <h1 class="name">${el}</h1>
         <p class="trans-eng">${trans}</p>
     </div>
     <p class="trans-arabic">in arabic</p>
-
       </div>
-
-    `;
-    secAllahNames.insertAdjacentHTML("beforebegin", getHtmlStructure);
+    `
+    );
   });
 };
 namesOfAllah(allAllahNames);
 const allDhikar = (obj) => {
   obj.dhikarList.forEach((el, i) => {
     const times = obj.times[i];
-    const getHtmlStructure = `
+    secDhikar.insertAdjacentHTML(
+      "beforebegin",
+      `
     <div class="about-dhikar">
       <div class="dhikar-list-element">
         <h1 class="name">${el}</h1>
         <p class="trans-arabic">${times}</p>
       </div>
     </div>
-    `;
-    secDhikar.insertAdjacentHTML("beforebegin", getHtmlStructure);
+    `
+    );
   });
 };
 allDhikar(typesOfDhikar);
@@ -383,7 +387,6 @@ function deleteSavedDhikar(ulElement, dhikar) {
     typesOfDhikar.savedDhikar.saved.splice(index, 1);
     updateUI(typesOfDhikar.savedDhikar.saved, controlBodyApp.inputDhikarUl);
   }
-  console.log(typesOfDhikar.savedDhikar.saved);
 }
 
 const makeKalmaPage = () => {
@@ -393,7 +396,7 @@ const makeKalmaPage = () => {
     <div class="all-kalma-readings">
     <div class="kalmas">
      <h2 class="kalma-postion">${el}</h2>
-     <h3 class="kalma-in-arabic">in arabic</h3>
+      <h3 class="kalma-in-arabic">in arabic</h3>
      <h3 class="translate-kalma">translation in english</h3>
      <h2 class="kalma-in-english">
 ${translation}
@@ -407,17 +410,15 @@ makeKalmaPage();
 const allAboutProphetNames = (obj) => {
   obj.names.forEach((el, i) => {
     const namesTranslation = obj.translation[i];
-    const prophetNamesHTMLStructure = `
-    <div class="about-prophet-names">
-      <h1 class="name pro">${el}</h1>
-      <p class="trans-eng pro">${namesTranslation}</p>
-    </div>
-  
-  
-  `;
-    document
-      .querySelector(".about-prophet-names")
-      .insertAdjacentHTML("beforebegin", prophetNamesHTMLStructure);
+    document.querySelector(".about-prophet-names").insertAdjacentHTML(
+      "beforebegin",
+      `
+      <div class="about-prophet-names">
+        <h1 class="name pro">${el}</h1>
+        <p class="trans-eng pro">${namesTranslation}</p>
+      </div>
+    `
+    );
   });
 };
 
@@ -477,13 +478,23 @@ chooseTime(salahObj.minutes);
 /////////////////////////////////////////////////
 const x = document.querySelector(".times-cell");
 const appSetCell = document.querySelector(".app-setting ");
+const btnSalahLearning = document.querySelector(".salah-learning-btn");
+const salahLearningCell = document.querySelector(".salah-learning");
+const closeSalahLearning = document.querySelector(".close-salah-learning");
 /////////////////////////////////////////////////////
-const worksWithClasses = () => {
+const completedWorkingWithClassesFuctionallity = () => {
   const sectionNames = document.querySelector(".setion-names");
   function workingWithClassesADD(addClass, removeClass) {
     addClass.classList.add("hidden");
     removeClass.classList.remove("hidden");
   }
+  closeSalahLearning.addEventListener("click", function () {
+    workingWithClassesADD(salahLearningCell, appBody);
+  });
+  btnSalahLearning.addEventListener("click", function () {
+    workingWithClassesADD(appBody, salahLearningCell);
+  });
+
   setUp.addEventListener("click", () => {
     workingWithClassesADD(appBody, appSetCell);
   });
@@ -541,7 +552,7 @@ const worksWithClasses = () => {
   //   x.classList.add("hidden");
   // });
 };
-worksWithClasses();
+completedWorkingWithClassesFuctionallity();
 btnstartDhikar.addEventListener("click", () => {
   time++;
   inputDhikar.value = time;
@@ -597,7 +608,7 @@ document
 const timeLeft = document.querySelector(".remain");
 const displayCurentTime = document.querySelector(".curent-time");
 console.log(displayCurentTime.textContent);
-function getCurentTime() {
+function getCurrentTimeCompletedFuctionallity() {
   setInterval(function () {
     const now = new Date();
     const hour = String(now.getHours()).padStart(2, 0);
@@ -606,76 +617,120 @@ function getCurentTime() {
     displayCurentTime.textContent = `${hour}:${minutes}:${seconds}`;
   }, 1000);
 }
-// const aboutRemainingTimeCell=function(){
-// getCurentTime();
-// let FirstTime = 4;
-// let secTime = 3;
-// let thirdTime = 5;
-// let fourthTime = 2;
-// let fifthTime = 4;
-// function tryKeepCodeDry(time, clearedFuction, calledFunction, message) {
-//   let minutesCount = Math.trunc(time / 60);
-//   let secondsCount = Math.trunc(time % 60);
-//   timeLeft.textContent = `${minutesCount}:${secondsCount}`;
-//   if (time < 1) {
-//     clearInterval(clearedFuction);
-//     calledFunction();
-//     console.log(message);
-//   }
-// }
-// function na(params) {}
-// function fifthTimeIn() {
-//   const int5 = setInterval(function () {
-//     tryKeepCodeDry(fifthTime, int5, na, "fith time over");
-//     fifthTime--;
-//   }, 1000);
-// }
+getCurrentTimeCompletedFuctionallity();
 
-// function forthTimeIn() {
-//   const int4 = setInterval(function () {
-//     tryKeepCodeDry(fourthTime, int4, fifthTimeIn, "forth time over");
-//     fourthTime--;
-//   }, 1000);
-// }
+const fullNoteMsg = document.querySelector(".full-note");
+const NoteMsg = document.querySelector(".note-message");
+const aboutRemonderCellMissingOneFunctionallity = function () {
+  let FirstTime = 4;
+  let secTime = 3;
+  let thirdTime = 5;
+  let fourthTime = 2;
+  let fifthTime = 4;
+  function tryKeepCodeDry(
+    time,
+    clearedFuction,
+    calledFunction,
+    message = [firstMessage, lastMessage]
+  ) {
+    let minutesCount = Math.trunc(time / 60);
+    let secondsCount = Math.trunc(time % 60);
+    timeLeft.textContent = `${minutesCount}:${secondsCount}`;
+    if (time < 1) {
+      clearInterval(clearedFuction);
+      calledFunction();
+      console.log(
+        "unfished updates wainting the seniors to tell me how exactly to do it, i want to change the message if a user clicks on the full athan button he should recieve full message"
+      );
+      NoteMsg.textContent = message[0];
+      NoteMsg.style.backgroundColor = "red";
 
-// function thirdTimeIn() {
-//   const int3 = setInterval(function () {
-//     tryKeepCodeDry(thirdTime, int3, forthTimeIn, "third time over");
-//     thirdTime--;
-//   }, 1000);
-// }
-// function secTimeIn() {
-//   const int2 = setInterval(function () {
-//     tryKeepCodeDry(secTime, int2, thirdTimeIn, "second time over");
-//     secTime--;
-//   }, 1000);
-// }
+      fullNoteMsg.addEventListener("click", (e) => {
+        if (e.target.classList.contains("full-note")) {
+          message.splice(0, 1);
+          NoteMsg.textContent = message[0];
+        }
+      });
+    }
+  }
+  function na(params) {}
+  function fifthTimeIn() {
+    const int5 = setInterval(function () {
+      tryKeepCodeDry(fifthTime, int5, na, [
+        "fith time over",
+        "secondeeeeeeeeeeeeeeeeeeeeeeeeeee",
+      ]);
+      fifthTime--;
+    }, 1000);
+  }
 
-// function makeCounter() {
-//   const int = setInterval(function () {
-//     tryKeepCodeDry(FirstTime, int, secTimeIn, "first time over");
-//     FirstTime--;
-//   }, 1000);
-// }
-// makeCounter();
-// }
-// aboutRemainingTimeCell()
-let timesIn = 120 * 59 + 60;
-function hourC() {
-  setInterval(function () {
-    let minutesCount = Math.trunc(timesIn / 60);
-    let hour = Math.trunc(minutesCount / 60);
-    let secondsCount = Math.trunc(timesIn % 60);
-    timeLeft.textContent = `${hour}:${minutesCount}:${secondsCount}`;
-    // timesIn--;
-  }, 1000);
+  function forthTimeIn() {
+    const int4 = setInterval(function () {
+      tryKeepCodeDry(fourthTime, int4, fifthTimeIn, [
+        "forth time over",
+        "seconddddddddddddddddddddddddddddddddddd",
+      ]);
+      fourthTime--;
+    }, 1000);
+  }
+
+  function thirdTimeIn() {
+    const int3 = setInterval(function () {
+      tryKeepCodeDry(thirdTime, int3, forthTimeIn, [
+        "third time over",
+        "secondccccccccccccccccccccccccccccccc",
+      ]);
+      thirdTime--;
+    }, 1000);
+  }
+  function secTimeIn() {
+    const int2 = setInterval(function () {
+      tryKeepCodeDry(secTime, int2, thirdTimeIn, [
+        "second time over",
+        "secondbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      ]);
+      secTime--;
+    }, 1000);
+  }
+
+  function makeCounter() {
+    const int = setInterval(function () {
+      tryKeepCodeDry(FirstTime, int, secTimeIn, [
+        "first time over",
+        "secondaaaaaaaaaaaaaaaaaaaaa",
+      ]);
+      FirstTime--;
+    }, 1000);
+  }
+  makeCounter();
+};
+aboutRemonderCellMissingOneFunctionallity();
+
+function completeTheSliderCellFunctuion() {
+  steps.forEach((step, i) => {
+    step.style.transform = `translateX(${100 * i}%)`;
+  });
+  let curValue = 0;
+  let maxLength = steps.length - 1;
+
+  btnRight.addEventListener("click", function () {
+    if (curValue === maxLength) {
+      curValue = 0;
+    }
+    curValue++;
+    steps.forEach((step, i) => {
+      step.style.transform = `translateX(${100 * (i - curValue)}%)`;
+    });
+  });
+  btnLeft.addEventListener("click", function () {
+    if (curValue === 0) {
+      curValue = maxLength;
+    } else {
+      curValue--;
+    }
+    steps.forEach((step, i) => {
+      step.style.transform = `translateX(${100 * (i - curValue)}%)`;
+    });
+  });
 }
-hourC();
-
-const allSteps = document.querySelector(".all-steps");
-const steps = document.querySelectorAll(".step-cell");
-
-steps.forEach((step, i) => {
-  console.log(i, step);
-  step.style.transform = `translateX(${100 * i})`;
-});
+completeTheSliderCellFunctuion();
