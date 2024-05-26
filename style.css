@@ -59,7 +59,10 @@ body {
 .salah-time,
 .more-settings,
 .aboutapp-set,
-.salah-learning {
+.salah-learning,
+.salah-name,
+.dont-close-btn,
+.mints {
   background-color: var(--terciary-color);
 }
 .name,
@@ -79,7 +82,11 @@ body {
 .salah-name .pro,
 .card-body,
 .pro-pal,
-.app-name {
+.app-name,
+.salah-name,
+.close-kalma-btn,
+.name,
+.trans-arabic {
   font-size: 1.4rem;
 }
 .about-Allah-names-cell,
@@ -94,7 +101,9 @@ body {
 .background-kalma,
 .about-prophet-names,
 .getSalahALL,
-.set-salah {
+.set-salah,
+.btn-cancel,
+.save-settings {
   border-radius: 11px;
 }
 
@@ -118,7 +127,9 @@ body {
 .rise,
 .all-Allah-names,
 .all-prophet-names,
-.dhikar-list-both {
+.dhikar-list-both,
+.btn-cancel,
+.save-settings {
   color: var(--terciary-color);
 }
 .kalma-in-english,
@@ -472,6 +483,10 @@ em {
 .tasmee-counter-head {
   top: 45%;
 }
+.name,
+.trans-arabic {
+  font-weight: 500;
+}
 /* kalma-reading */
 
 .kalmas {
@@ -502,13 +517,16 @@ em {
 }
 /* salah time */
 .getSalahALL {
-  padding: 5px;
   margin: 10px;
 }
-
-.set-salah {
-  width: 350px;
+.salah-time,
+.getSalahALL,
+.set-btn {
+  padding: 5px;
 }
+/* .set-salah {
+  width: 350px;
+} */
 .reminder-cell {
   border-bottom: 1px solid var(--box-shadow);
 }
@@ -518,22 +536,41 @@ em {
 
 .set-btn {
   justify-content: space-between;
-  padding: 5px;
 }
 
 .mints {
   text-align: center;
+  font-size: 1.4rem;
+  font-weight: 700;
 }
 .times1 {
   width: auto;
+}
+.salah-cells,
+.times1 {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
+.salah-name {
+  color: var(--shadow-color);
+  text-transform: capitalize;
+  font-size: 1rem;
+}
+.btn-cancel,
+.save-settings {
+  font-size: 1rem;
+  padding: 6px 12px;
+  background-color: var(--primary-color);
+}
+.save-settings {
+  margin-top: 10px;
+  margin-left: 20%;
+}
 .set-salah,
 .times-cell {
-  max-width: 300px;
+  max-width: 250px;
   padding: 10px;
   position: absolute;
   top: 50%;
@@ -541,7 +578,24 @@ em {
   transform: translate(-50%, -50%);
   z-index: 10;
 }
+.dont-close-btn {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--shadow-color);
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.reminder-tone,
+.reminder-time,
+.reminder-head {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+.center-btn {
+  margin-left: 40%;
+}
 .times-cell {
   overflow: none;
   top: 70%;

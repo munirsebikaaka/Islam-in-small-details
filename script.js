@@ -2,7 +2,7 @@
 
 const allAllahNames = {
   names: [
-    "Allah",
+    "ALLAH",
     "AR-RAHMAN",
     "AR-RAHEEM",
     "AR-MALIK",
@@ -49,66 +49,88 @@ const allAllahNames = {
     "AL-MUJEEB",
   ],
   translation: [
-    "Trunslation in english",
-    "Trunslation in english",
-    "Trunslation in english",
-    "Trunslation in english",
-    "Trunslation in english",
-    "Trunslation in english",
-    "Trunslation in english",
-    "Trunslation in english",
-    "Trunslation in english",
-    "Trunslation in english",
-    "Trunslation in english",
-    "Trunslation in english",
-    "Trunslation in english",
-    "Trunslation in english",
-    "Trunslation in english",
-    "Trunslation in english",
-    "Trunslation in english",
-    "Trunslation in english",
-    "Trunslation in english",
-    "Trunslation in english",
-    "Trunslation in english",
-    "Trunslation in english",
-    "Trunslation in english",
-    "Trunslation in english",
-    "Trunslation in english",
-    "Trunslation in english",
-    "Trunslation in english",
-    "Trunslation in english",
-    "Trunslation in english",
-    "Trunslation in english",
-    "Trunslation in english",
-    "Trunslation in english",
-    "Trunslation in english",
-    "Trunslation in english",
-    "Trunslation in english",
-    "Trunslation in english",
-    "Trunslation in english",
-    "Trunslation in english",
-    "Trunslation in english",
-    "Trunslation in english",
-    "Trunslation in english",
-    "Trunslation in english",
-    "Trunslation in english",
-    "Trunslation in english",
-    "Trunslation in english",
+    "He is Allah besides him no god",
+    "The most gracious",
+    "the most mercefull",
+    "the king",
+    "the pure one",
+    "the altmate provider of peace",
+    "the gudian of faith",
+    "the preserver",
+    "the almighty",
+    "the compeller",
+    "the greatest",
+    "the creator",
+    "the maker of order",
+    "the shaper of beauty",
+    "the forgiving",
+    "the subduer",
+    "the giver of all",
+    "the sustainer",
+    "the opener",
+    "the knower of all",
+    "the constrictor",
+    "the reliever",
+    "the abaser",
+    "the exalter",
+    "the bestower of honor",
+    "the humiliator",
+    "the hearer of all",
+    "the seer of all",
+    "the judge",
+    "the just",
+    "the subtle one",
+    "the all-aware",
+    "the forebearing",
+    "the magnifient",
+    "The forgiver",
+    "The higest",
+    "the greatest",
+    "the preserver",
+    "the nourisher",
+    "the acounter",
+    "The mighty",
+    "the generous",
+    "the watchful one",
+    "the responder of prayers",
+    "the all-Comprehending",
   ],
 };
 const prophetName = {
-  names: ["names", "names", "names", "names", "names", "names", "names"],
-  translation: ["trans", "trans", "trans", "trans", "trans", "trans", "trans"],
+  names: [
+    "Muhammad",
+    "Ahmad",
+    "Hammid",
+    "Mahmud",
+    "qasim",
+    "faateh",
+    "agib",
+    "shahid",
+    "hashid",
+    "rashid",
+  ],
+  translation: [
+    "Highly praised",
+    "the most commendable",
+    "praising",
+    "praised",
+    "a distributor",
+    "the victor",
+    "the latest",
+    "the witness",
+    "the gatherer",
+    "the guide",
+  ],
 };
 const typesOfDhikar = {
   dhikarList: [
-    "arabic words",
-    "arabic words",
-    "arabic words",
-    "arabic words",
-    "arabic words",
+    "Subuhaana-Allah",
+    "Walhamudu-Lillah",
+    "Walaa-Illaha-Illa-llah",
+    "Allahu Akbar",
+    "Alhamudulillah",
   ],
-  times: [30, 100, 36, 200, 150],
+  times: [30, 35, 36, 100, 150],
   savedDhikar: {
     saved: [],
   },
@@ -151,14 +173,14 @@ const salahObj = {
     "al-Isha",
   ],
   timesPerSalah: [
-    "00:00",
-    "00:00",
-    "00:00",
-    "00:00",
-    "00:00",
-    "00:00",
-    "00:00",
-    "00:00",
+    "04:40am",
+    "06:01am",
+    "12:36pm",
+    "03:53pm",
+    "04:10pm",
+    "07:10pm",
+    "07:10pm",
+    "08:31pm",
   ],
   minutes: ["mints", "mints", "mints", "mints"],
 };
@@ -428,12 +450,13 @@ const salahCellFunc = (obj) => {
     const times = obj.timesPerSalah[i];
     const getHtmlStructureOfSalah = `
     <div class="getSalahALL">
-    <p class="icon">icon</p>
-    <div>
+    <p class="icon"><ion-icon name="sunny"></ion-icon>
+    </p>
+    <div class="salah-cells">
       <button class="btn salah-name">${el}</button>
-      <p class="icon">${times}</p>
+      <p class=" salah-name timepersalah">${times}</p>
     </div>
-    <button class="icon">btn</button>
+    <button class="btn icon btn-cancel">Cancel</button>
   </div>
     `;
     salahCell.insertAdjacentHTML("beforebegin", getHtmlStructureOfSalah);
@@ -465,13 +488,14 @@ document.querySelectorAll(".add-salah-func").forEach((el) =>
 
 function chooseTime(obj) {
   obj.forEach((el, i) => {
-    const mintsHtmlStructure = `
+    minutes.insertAdjacentHTML(
+      "beforebegin",
+      `
     <div class="times2">
      <p class="mint">${i + 1} ${el}</p>
     </div>
-    
-    `;
-    minutes.insertAdjacentHTML("beforebegin", mintsHtmlStructure);
+    `
+    );
   });
 }
 chooseTime(salahObj.minutes);
@@ -653,7 +677,7 @@ const aboutRemonderCellMissingOneFunctionallity = function () {
       });
     }
   }
-  function na(params) {}
+  function na() {}
   function fifthTimeIn() {
     const int5 = setInterval(function () {
       tryKeepCodeDry(fifthTime, int5, na, [
