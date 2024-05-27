@@ -166,7 +166,6 @@ const salahObj = {
     "al-Fajir",
     "sunrise",
     "al-Dhuhar",
-    ,
     "al-Asar",
     "sunset",
     "al-Maghrid",
@@ -187,7 +186,7 @@ const salahObj = {
 
 const cotrolButtons = {
   closeSalahBtn: ".btn-close-salah",
-  openWindowCell: ".window-btn",
+  openWindowCell: ".window-btn-open",
   closeWindowCell: ".close-window",
   openNamesCell: ".about-names",
   openDikarAllCell: ".dhikars-list-all",
@@ -266,15 +265,18 @@ const controlBodyApp = {
   inputDhikarUl: ".saved-dhikar-list-paper",
   windowCardCell: ".pro-section",
   overlayCheckCell: ".overlay",
+  abountMonth: ".about-monthEn",
+  remain: "remain",
+  aboutAllahNames: ".about-Allah-names",
 };
 const inputDhikarSavedIdUl = document.querySelector(
   controlBodyApp.inputDhikarUl
 );
 const windowCard = document.querySelector(controlBodyApp.windowCardCell);
 const overlayCheck = document.querySelector(controlBodyApp.overlayCheckCell);
-const internationalTime = document.querySelector(".about-monthEn");
-const remainTime = document.querySelector(".remain");
-const secAllahNames = document.querySelector(".about-Allah-names");
+const internationalTime = document.querySelector(controlBodyApp.abountMonth);
+const remainTime = document.querySelector(controlBodyApp.remain);
+const secAllahNames = document.querySelector(controlBodyApp.aboutAllahNames);
 const secDhikar = document.querySelector(".about-dhikar");
 const appBody = document.querySelector(".application-body");
 const inputDhikar = document.getElementById("counter-dhikar");
@@ -298,6 +300,18 @@ const minutes = document.querySelector(".times2");
 const steps = document.querySelectorAll(".step-cell");
 const btnRight = document.querySelector(".slide--right");
 const btnLeft = document.querySelector(".slide--left");
+const displayCurentTime = document.querySelector(".curent-time");
+const x = document.querySelector(".times-cell");
+const appSetCell = document.querySelector(".app-setting ");
+const btnSalahLearning = document.querySelector(".salah-learning-btn");
+const salahLearningCell = document.querySelector(".salah-learning");
+const closeSalahLearning = document.querySelector(".close-salah-learning");
+const btnCloseSettings = document.querySelector(".close-settings");
+const fullNoteMsg = document.querySelectorAll(".full-note");
+const NoteMsg = document.querySelector(".note-message");
+const NoteMsg2 = document.querySelector(".note-message2");
+const btnCancel = document.querySelectorAll(".btn-cancel");
+const timeLeft = document.querySelector(".remain");
 
 let time = 0;
 
@@ -317,6 +331,7 @@ const allWindowActivitiesAdded = () => {
   };
   overlayCheck.addEventListener("click", useOverlayClose);
   openWindowBtn.addEventListener("click", openWindow);
+
   closeWindowBtn.addEventListener("click", closeWidow);
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
@@ -500,11 +515,7 @@ function chooseTime(obj) {
 }
 chooseTime(salahObj.minutes);
 /////////////////////////////////////////////////
-const x = document.querySelector(".times-cell");
-const appSetCell = document.querySelector(".app-setting ");
-const btnSalahLearning = document.querySelector(".salah-learning-btn");
-const salahLearningCell = document.querySelector(".salah-learning");
-const closeSalahLearning = document.querySelector(".close-salah-learning");
+
 /////////////////////////////////////////////////////
 const completedWorkingWithClassesFuctionallity = () => {
   const sectionNames = document.querySelector(".setion-names");
@@ -521,6 +532,9 @@ const completedWorkingWithClassesFuctionallity = () => {
 
   setUp.addEventListener("click", () => {
     workingWithClassesADD(appBody, appSetCell);
+  });
+  btnCloseSettings.addEventListener("click", function () {
+    workingWithClassesADD(appSetCell, appBody);
   });
   btnAllDhikarTogether.addEventListener("click", function () {
     workingWithClassesADD(tasmeeCounterHead, insideDhikar);
@@ -577,61 +591,84 @@ const completedWorkingWithClassesFuctionallity = () => {
   // });
 };
 completedWorkingWithClassesFuctionallity();
-btnstartDhikar.addEventListener("click", () => {
-  time++;
-  inputDhikar.value = time;
-});
-btnRestartDhikar.addEventListener("click", () => {
-  time = 0;
-  inputDhikar.value = 0;
-});
 
-document
-  .querySelector(".dhikar-list-both-cell")
-  .addEventListener("click", function (e) {
-    if (e.target.classList.contains("dhikar-list-both-saved")) {
-      const btnSavedList = e.target;
-      btnSavedList.addEventListener("click", function () {
-        dhikarListUnsaved.classList.add("hidden");
-        saveddhikarLISTCell.classList.remove("hidden");
-        btnSavedList.style.color = "var(--primary-color)";
-        unsaved.style.color = "var(--terciary-color)";
-      });
-    } else if (e.target.classList.contains("dhikar-list-both-list")) {
-      const btnMainList = e.target;
-      btnMainList.addEventListener("click", function () {
-        saveddhikarLISTCell.classList.add("hidden");
-        dhikarListUnsaved.classList.remove("hidden");
-        btnMainList.style.color = "var(--primary-color)";
-        saved.style.color = "var(--terciary-color)";
-      });
-    }
+function countDhikar() {
+  btnstartDhikar.addEventListener("click", () => {
+    time++;
+    inputDhikar.value = time;
   });
-document
-  .querySelector(".Allah-prophet-names")
-  .addEventListener("click", (e) => {
-    if (e.target.classList.contains("prophet-names")) {
-      const btnProphet = e.target;
-      btnProphet.addEventListener("click", () => {
-        allAboutAllahNames.classList.add("hidden");
-        allAboutProphNames.classList.remove("hidden");
-        btnProphet.style.color = "var(--primary-color)";
-        btnAllah.style.color = "var(--terciary-color)";
-      });
-    } else if (e.target.classList.contains("Allah-names")) {
-      const btnAllah = e.target;
-      console.log(btnAllah);
-      btnAllah.addEventListener("click", () => {
-        allAboutAllahNames.classList.remove("hidden");
-        allAboutProphNames.classList.add("hidden");
-        btnAllah.style.color = "var(--primary-color)";
-        btnProphet.style.color = "var(--terciary-color)";
-      });
-    }
+  btnRestartDhikar.addEventListener("click", () => {
+    time = 0;
+    inputDhikar.value = 0;
   });
-const timeLeft = document.querySelector(".remain");
-const displayCurentTime = document.querySelector(".curent-time");
-console.log(displayCurentTime.textContent);
+}
+countDhikar();
+
+function allAboutNamesAndListsCellFunction() {
+  function allAboutNamesAndLists(
+    btnClicked,
+    addClass,
+    removeClass,
+    btnPrimary,
+    btnTatiary
+  ) {
+    btnClicked.addEventListener("click", () => {
+      addClass.classList.add("hidden");
+      removeClass.classList.remove("hidden");
+      btnPrimary.style.color = "var(--primary-color)";
+      btnTatiary.style.color = "var(--terciary-color)";
+    });
+  }
+  document
+    .querySelector(".dhikar-list-both-cell")
+    .addEventListener("click", function (e) {
+      if (e.target.classList.contains("dhikar-list-both-saved")) {
+        const btnSavedList = e.target;
+        allAboutNamesAndLists(
+          btnSavedList,
+          dhikarListUnsaved,
+          saveddhikarLISTCell,
+          btnSavedList,
+          unsaved
+        );
+      } else if (e.target.classList.contains("dhikar-list-both-list")) {
+        const btnMainList = e.target;
+        allAboutNamesAndLists(
+          btnMainList,
+          saveddhikarLISTCell,
+          dhikarListUnsaved,
+          btnMainList,
+          saved
+        );
+      }
+    });
+
+  document
+    .querySelector(".Allah-prophet-names")
+    .addEventListener("click", (e) => {
+      if (e.target.classList.contains("prophet-names")) {
+        const btnProphet = e.target;
+        allAboutNamesAndLists(
+          btnProphet,
+          allAboutAllahNames,
+          allAboutProphNames,
+          btnProphet,
+          btnAllah
+        );
+      } else if (e.target.classList.contains("Allah-names")) {
+        const btnAllah = e.target;
+        allAboutNamesAndLists(
+          btnAllah,
+          allAboutProphNames,
+          allAboutAllahNames,
+          btnAllah,
+          btnProphet
+        );
+      }
+    });
+}
+allAboutNamesAndListsCellFunction();
+
 function getCurrentTimeCompletedFuctionallity() {
   setInterval(function () {
     const now = new Date();
@@ -643,92 +680,120 @@ function getCurrentTimeCompletedFuctionallity() {
 }
 getCurrentTimeCompletedFuctionallity();
 
-const fullNoteMsg = document.querySelector(".full-note");
-const NoteMsg = document.querySelector(".note-message");
-const aboutRemonderCellMissingOneFunctionallity = function () {
-  let FirstTime = 4;
-  let secTime = 3;
-  let thirdTime = 5;
+NoteMsg2.classList.add("hidden");
+let timeFuctionallity = true;
+btnCancel.forEach((el) => {
+  el.addEventListener("click", () => {
+    timeFuctionallity = false;
+  });
+});
+const aboutReminderCellAllFunctionallityFinished = function () {
+  let FirstTime = 60;
+  let secTime = 30;
+  let thirdTime = 6;
   let fourthTime = 2;
   let fifthTime = 4;
+
   function tryKeepCodeDry(
     time,
     clearedFuction,
     calledFunction,
     message = [firstMessage, lastMessage]
   ) {
-    let minutesCount = Math.trunc(time / 60);
-    let secondsCount = Math.trunc(time % 60);
+    let minutesCount = String(Math.trunc(time / 60)).padStart(2, 0);
+    // console.log("unfishedd");
+    // let hour = String(Math.trunc(minutesCount / 60)).padStart(2,0);
+    let secondsCount = String(Math.trunc(time % 60)).padStart(2, 0);
     timeLeft.textContent = `${minutesCount}:${secondsCount}`;
+    fullNoteMsg.forEach((el) =>
+      el.addEventListener("click", () => {
+        NoteMsg.classList.add("hidden");
+        // NoteMsg2.classList.remove("hidden");
+      })
+    );
     if (time < 1) {
       clearInterval(clearedFuction);
       calledFunction();
-      console.log(
-        "unfished updates wainting the seniors to tell me how exactly to do it, i want to change the message if a user clicks on the full athan button he should recieve full message"
-      );
       NoteMsg.textContent = message[0];
-      NoteMsg.style.backgroundColor = "red";
+      NoteMsg2.textContent = message[1];
 
-      fullNoteMsg.addEventListener("click", (e) => {
-        if (e.target.classList.contains("full-note")) {
-          message.splice(0, 1);
-          NoteMsg.textContent = message[0];
-        }
-      });
+      NoteMsg.style.backgroundColor = "red";
     }
   }
+
   function na() {}
   function fifthTimeIn() {
-    const int5 = setInterval(function () {
-      tryKeepCodeDry(fifthTime, int5, na, [
-        "fith time over",
-        "secondeeeeeeeeeeeeeeeeeeeeeeeeeee",
-      ]);
-      fifthTime--;
-    }, 1000);
+    if (timeFuctionallity) {
+      const int5 = setInterval(function () {
+        tryKeepCodeDry(fifthTime, int5, na, [
+          `Time for salat ${salahObj.salah[6]}`,
+          `Its ${displayCurentTime.textContent} and its Time for salat ${salahObj.salah[6]} `,
+        ]);
+        fifthTime--;
+      }, 1000);
+    } else {
+      na();
+    }
   }
 
   function forthTimeIn() {
-    const int4 = setInterval(function () {
-      tryKeepCodeDry(fourthTime, int4, fifthTimeIn, [
-        "forth time over",
-        "seconddddddddddddddddddddddddddddddddddd",
-      ]);
-      fourthTime--;
-    }, 1000);
+    if (timeFuctionallity) {
+      const int4 = setInterval(function () {
+        tryKeepCodeDry(fourthTime, int4, fifthTimeIn, [
+          `Time for salat ${salahObj.salah[5]}`,
+          `Its ${displayCurentTime.textContent} and its Time for salat ${salahObj.salah[5]} `,
+        ]);
+        fourthTime--;
+      }, 1000);
+    } else {
+      fifthTimeIn();
+    }
   }
 
   function thirdTimeIn() {
-    const int3 = setInterval(function () {
-      tryKeepCodeDry(thirdTime, int3, forthTimeIn, [
-        "third time over",
-        "secondccccccccccccccccccccccccccccccc",
-      ]);
-      thirdTime--;
-    }, 1000);
+    if (timeFuctionallity) {
+      const int3 = setInterval(function () {
+        tryKeepCodeDry(thirdTime, int3, forthTimeIn, [
+          `Time for salat ${salahObj.salah[3]}`,
+          `Its ${displayCurentTime.textContent} and its Time for salat ${salahObj.salah[3]} `,
+        ]);
+        thirdTime--;
+      }, 1000);
+    } else {
+      forthTimeIn();
+    }
   }
+
   function secTimeIn() {
-    const int2 = setInterval(function () {
-      tryKeepCodeDry(secTime, int2, thirdTimeIn, [
-        "second time over",
-        "secondbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
-      ]);
-      secTime--;
-    }, 1000);
+    if (timeFuctionallity) {
+      const int2 = setInterval(function () {
+        tryKeepCodeDry(secTime, int2, thirdTimeIn, [
+          `Time for salat ${salahObj.salah[2]}`,
+          `Its ${displayCurentTime.textContent} and its Time for salat ${salahObj.salah[2]} `,
+        ]);
+        secTime--;
+      }, 1000);
+    } else {
+      thirdTimeIn();
+    }
   }
 
   function makeCounter() {
-    const int = setInterval(function () {
-      tryKeepCodeDry(FirstTime, int, secTimeIn, [
-        "first time over",
-        "secondaaaaaaaaaaaaaaaaaaaaa",
-      ]);
-      FirstTime--;
-    }, 1000);
+    if (timeFuctionallity) {
+      const int = setInterval(function () {
+        tryKeepCodeDry(FirstTime, int, secTimeIn, [
+          `Time for salat ${salahObj.salah[0]}`,
+          `Its ${displayCurentTime.textContent} and its Time for salat ${salahObj.salah[0]} `,
+        ]);
+        FirstTime--;
+      }, 1000);
+    } else {
+      secTimeIn();
+    }
   }
   makeCounter();
 };
-aboutRemonderCellMissingOneFunctionallity();
+aboutReminderCellAllFunctionallityFinished();
 
 function completeTheSliderCellFunctuion() {
   steps.forEach((step, i) => {
