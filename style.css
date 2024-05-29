@@ -86,7 +86,10 @@ body {
 .salah-name,
 .close-kalma-btn,
 .name,
-.trans-arabic {
+.trans-arabic,
+.salah-head,
+.arabic-translation,
+.salah-head-arabic {
   font-size: 1.4rem;
 }
 .about-Allah-names-cell,
@@ -142,7 +145,8 @@ body {
 .btn-close-all-dhikar,
 .close-btn,
 .close-kalma-btn,
-.dhikar-act1 {
+.dhikar-act1,
+.arabic-translation {
   color: var(--primary-color);
 }
 
@@ -430,16 +434,12 @@ em {
   padding: 70px 30px 20px;
   border-radius: 11px;
 }
-.close-dhikar-windows,
-.btn-leave-saved-dhikar,
-.btn-close-all-dhikar,
-.close-btn,
-.close-kalma-btn {
+.open-close-cell {
   font-weight: 500;
   padding: 10px;
   border-radius: 25px;
   margin-bottom: 50px;
-  background-color: var(--main-backgroond);
+  color: var(--primary-color);
 }
 #counter-dhikar {
   width: 150px;
@@ -524,9 +524,7 @@ em {
 .set-btn {
   padding: 5px;
 }
-/* .set-salah {
-  width: 350px;
-} */
+
 .reminder-cell {
   border-bottom: 1px solid var(--box-shadow);
 }
@@ -625,7 +623,7 @@ em {
 }
 /* SALAH LEARNIG */
 .all-steps {
-  max-width: 100rem;
+  max-width: 100%;
   height: 50rem;
   margin: 0 auto;
   position: relative;
@@ -636,10 +634,8 @@ em {
   top: 0;
   width: 100%;
   height: 50rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+
+  transition: transform 1s;
 }
 
 .action-image {
@@ -660,11 +656,10 @@ em {
 
   border: none;
   background: var(--main-backgroond);
-  /* font-family: inherit; */
   color: var(--terciary-color);
   border-radius: 50%;
-  height: 3rem;
-  width: 3rem;
+  height: 2rem;
+  width: 2rem;
   font-size: 1.5rem;
   cursor: pointer;
   transform: translateX();
@@ -678,4 +673,28 @@ em {
 .slide--right {
   right: 6%;
   transform: translate(50%, -50%);
+}
+.salah-head {
+  text-transform: capitalize;
+}
+.salah-head,
+.use-of-act,
+.salah-head-arabic {
+  font-weight: 500;
+}
+.arabic-translation {
+  text-transform: capitalize;
+}
+.use-of-act {
+  font-size: 1.2rem;
+}
+.inside-cell {
+  width: 400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  border: 1px solid red;
+  padding: 10px;
 }
