@@ -308,12 +308,15 @@ const salahLearningCell = document.querySelector(".salah-learning");
 const closeSalahLearning = document.querySelector(".close-salah-learning");
 const btnCloseSettings = document.querySelector(".close-settings");
 const fullNoteMsg = document.querySelectorAll(".full-note");
+console.log(fullNoteMsg);
 const NoteMsg = document.querySelector(".note-message");
 const NoteMsg2 = document.querySelector(".note-message2");
 const btnCancel = document.querySelectorAll(".btn-cancel");
 const timeLeft = document.querySelector(".remain");
 
 let time = 0;
+let timeFuctionallity = true;
+let voiceSound = true;
 
 const allWindowActivitiesAdded = () => {
   const openWindow = () => {
@@ -514,8 +517,6 @@ function chooseTime(obj) {
   });
 }
 chooseTime(salahObj.minutes);
-/////////////////////////////////////////////////
-
 /////////////////////////////////////////////////////
 const completedWorkingWithClassesFuctionallity = () => {
   const sectionNames = document.querySelector(".setion-names");
@@ -679,20 +680,48 @@ function getCurrentTimeCompletedFuctionallity() {
   }, 1000);
 }
 getCurrentTimeCompletedFuctionallity();
-
+const btnFullAdhan = document.querySelectorAll(".full-adhan");
+const btnshortAdhan = document.querySelector(".short-adhan");
 NoteMsg2.classList.add("hidden");
-let timeFuctionallity = true;
+
 btnCancel.forEach((el) => {
   el.addEventListener("click", () => {
     timeFuctionallity = false;
   });
 });
+const contents = [
+  "Allahu akbar allahu akbar allahu akbar allahu akbar ",
+  "Allahu akbar allahu akbar allahu akbar allahu akbar ashhadu allah illaha illah llah ashhadu allah illaha illah llah",
+];
+
+const voice1 = contents[0];
+const voice2 = contents[1];
+btnFullAdhan.forEach((el) =>
+  el.addEventListener("click", function () {
+    voiceSound = false;
+  })
+);
+btnshortAdhan.addEventListener("click", function () {
+  voiceSound = true;
+});
+function speek1(speaked) {
+  if (voiceSound) {
+    let speakedWords = new SpeechSynthesisUtterance(speaked);
+    speechSynthesis.speak(speakedWords);
+  }
+}
+function speek2(speaked) {
+  if (!voiceSound) {
+    let speakedWords = new SpeechSynthesisUtterance(speaked);
+    speechSynthesis.speak(speakedWords);
+  }
+}
 const aboutReminderCellAllFunctionallityFinished = function () {
-  let FirstTime = 60;
-  let secTime = 30;
-  let thirdTime = 6;
-  let fourthTime = 2;
-  let fifthTime = 4;
+  let FirstTime = 3600;
+  let secTime = 3600;
+  let thirdTime = 3600;
+  let fourthTime = 3600;
+  let fifthTime = 3600;
 
   function tryKeepCodeDry(
     time,
@@ -701,22 +730,23 @@ const aboutReminderCellAllFunctionallityFinished = function () {
     message = [firstMessage, lastMessage]
   ) {
     let minutesCount = String(Math.trunc(time / 60)).padStart(2, 0);
-    // console.log("unfishedd");
-    // let hour = String(Math.trunc(minutesCount / 60)).padStart(2,0);
+    let hour = String(Math.trunc(minutesCount / 60)).padStart(2, 0);
     let secondsCount = String(Math.trunc(time % 60)).padStart(2, 0);
-    timeLeft.textContent = `${minutesCount}:${secondsCount}`;
+    timeLeft.textContent = `${hour}:${minutesCount}:${secondsCount}`;
     fullNoteMsg.forEach((el) =>
       el.addEventListener("click", () => {
         NoteMsg.classList.add("hidden");
-        // NoteMsg2.classList.remove("hidden");
+        NoteMsg2.classList.remove("hidden");
       })
     );
+
     if (time < 1) {
       clearInterval(clearedFuction);
       calledFunction();
       NoteMsg.textContent = message[0];
       NoteMsg2.textContent = message[1];
-
+      speek1(voice1);
+      speek2(voice2);
       NoteMsg.style.backgroundColor = "red";
     }
   }

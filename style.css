@@ -59,8 +59,8 @@ body {
 .salah-time,
 .more-settings,
 .aboutapp-set,
-.salah-learning,
 .salah-name,
+.step-cell,
 .dont-close-btn,
 .mints {
   background-color: var(--terciary-color);
@@ -89,7 +89,8 @@ body {
 .trans-arabic,
 .salah-head,
 .arabic-translation,
-.salah-head-arabic {
+.salah-head-arabic,
+.namaz {
   font-size: 1.4rem;
 }
 .about-Allah-names-cell,
@@ -106,7 +107,10 @@ body {
 .getSalahALL,
 .set-salah,
 .btn-cancel,
-.save-settings {
+.save-settings,
+.inside-cell,
+.set-btn-default,
+.appset-cell1 {
   border-radius: 11px;
 }
 
@@ -121,7 +125,8 @@ body {
 .about-salah-div,
 .times1,
 .more-settings,
-.aboutapp-set {
+.aboutapp-set,
+.inside-cell {
   box-shadow: 0 1px 5px var(--box-shadow);
 }
 .card-head,
@@ -557,7 +562,8 @@ em {
   font-size: 1rem;
 }
 .btn-cancel,
-.save-settings {
+.save-settings,
+.set-btn-default {
   font-size: 1rem;
   padding: 6px 12px;
   background-color: var(--primary-color);
@@ -621,6 +627,17 @@ em {
 .app-setting-bac {
   background-color: #faf8f8;
 }
+.namaz {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid var(--box-shadow);
+}
+.set-btn-default {
+  color: var(--terciary-color);
+  margin-left: 20px;
+}
 /* SALAH LEARNIG */
 .all-steps {
   max-width: 100%;
@@ -634,8 +651,8 @@ em {
   top: 0;
   width: 100%;
   height: 50rem;
-
   transition: transform 1s;
+  overflow: hidden;
 }
 
 .action-image {
@@ -695,6 +712,7 @@ em {
   align-items: center;
   justify-content: space-around;
   flex-direction: column;
-  border: 1px solid red;
+  /* border: 1px solid red; */
   padding: 10px;
+  /* background-color: red; */
 }
