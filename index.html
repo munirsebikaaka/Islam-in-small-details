@@ -7,52 +7,55 @@
   </head>
   <link rel="stylesheet" href="style.css" />
   <body>
+    <section class="pro-section hidden">
+      <div class="header-section">
+        <div class="close-tool">
+          <a href="#">codesmann</a>
+          <button class="btn close-window">X</button>
+        </div>
+        <h1 class="pro-head">Upgrade To Premium</h1>
+        <p class="pro-pal">Uninterrupted Acces To the Entire App</p>
+        <div class="icon-cell">
+          <button class="icons">b1</button>
+          <button class="icons">b2</button>
+          <button class="icons">b3</button>
+          <button class="icons">b4</button>
+          <button class="icons">b5</button>
+        </div>
+        <div class="cards-cell">
+          <div class="pro-card">
+            <h2 class="card-head">30% Discount</h2>
+            <h1 class="card-body">3 Month Plan</h1>
+            <p class="card-pal">Before Discount</p>
+            <div class="empty"></div>
+          </div>
+          <div class="pro-card cell-green">
+            <h2 class="card-head pro-green">Best Plans</h2>
+            <h1 class="card-body">Monthly Plan</h1>
+            <p class="card-pal">Auto Renewal</p>
+            <div class="empty pro-green"></div>
+          </div>
+          <div class="pro-card">
+            <h2 class="card-head">55% Discount</h2>
+            <h1 class="card-body">Lifetime Plan</h1>
+            <p class="card-pal">Before Discount</p>
+            <div class="empty"></div>
+          </div>
+        </div>
+        <div class="card-dis">
+          <p class="card-discription">
+            <em>Monthly Plan</em> & <em>3 Month Plan </em>are
+            <em>Auto Subscribed</em> on the next period.
+          </p>
+          <button class="btn btn-subscribe">Subscribe</button>
+        </div>
+      </div>
+    </section>
     <section class="application-body">
       <header class="application-head">
-        <p class="note-message"></p>
-        <p class="note-message2"></p>
-        <section class="header-section">
-          <div class="pro-section hidden">
-            <div class="close-tool">
-              <a href="#">codesmann</a>
-              <button class="btn close-window">X</button>
-            </div>
-            <h1 class="pro-head">Upgrade To Premium</h1>
-            <p class="pro-pal">Uninterrupted Acces To the Entire App</p>
-            <div class="icon-cell">
-              <button class="icons">b1</button>
-              <button class="icons">b2</button>
-              <button class="icons">b3</button>
-              <button class="icons">b4</button>
-              <button class="icons">b5</button>
-            </div>
-            <div class="cards-cell">
-              <div class="pro-card">
-                <h2 class="card-head">30% Discount</h2>
-                <h1 class="card-body">3 Month Plan</h1>
-                <p class="card-pal">Before Discount</p>
-                <div class="empty"></div>
-              </div>
-              <div class="pro-card cell-green">
-                <h2 class="card-head pro-green">Best Plans</h2>
-                <h1 class="card-body">Monthly Plan</h1>
-                <p class="card-pal">Auto Renewal</p>
-                <div class="empty pro-green"></div>
-              </div>
-              <div class="pro-card">
-                <h2 class="card-head">55% Discount</h2>
-                <h1 class="card-body">Lifetime Plan</h1>
-                <p class="card-pal">Before Discount</p>
-                <div class="empty"></div>
-              </div>
-            </div>
-            <p class="card-discription">
-              <em>Monthly Plan</em> & <em>3 Month Plan </em>are
-              <em>Auto Subscribed</em> on the next period.
-            </p>
-            <button class="btn btn-subscribe">Subscribe</button>
-          </div>
-        </section>
+        <p class="note-message notes"></p>
+        <p class="note-message2 notes"></p>
+
         <div class="times-head">
           <div>
             <p class="app-name">Simplified Islam</p>
@@ -295,17 +298,25 @@
               <div>
                 <p class="namaz">
                   Namaz notification
-                  <button class="btn set-btn-default full-note">Note</button>
+                  <button class="btn set-btn-default activate-message">
+                    Note
+                  </button>
                 </p>
                 <p class="namaz">
                   Use Adhan Sound
-                  <button class="btn set-btn-default full-adhan">Note</button>
+                  <button class="btn set-btn-default activate-adhan">
+                    Note
+                  </button>
                 </p>
               </div>
-              <div>
+              <div class="short-full-cell">
                 <h1 class="type">Adhan type</h1>
-                <button class="btn short-adhan">Half Adhan</button>
-                <button class="btn full-adhan">Full Adhan</button>
+                <button class="btn short-full short-adhan">
+                  <input type="checkbox" />Half Adhan
+                </button>
+                <button class="btn short-full full-adhan">
+                  <input type="checkbox" />Full Adhan
+                </button>
               </div>
             </div>
           </div>

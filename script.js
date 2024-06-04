@@ -307,25 +307,27 @@ const btnSalahLearning = document.querySelector(".salah-learning-btn");
 const salahLearningCell = document.querySelector(".salah-learning");
 const closeSalahLearning = document.querySelector(".close-salah-learning");
 const btnCloseSettings = document.querySelector(".close-settings");
-const fullNoteMsg = document.querySelectorAll(".full-note");
-console.log(fullNoteMsg);
+const fullNoteMsg = document.querySelector(".full-note");
 const NoteMsg = document.querySelector(".note-message");
 const NoteMsg2 = document.querySelector(".note-message2");
 const btnCancel = document.querySelectorAll(".btn-cancel");
 const timeLeft = document.querySelector(".remain");
-
+const arabicDate = document.querySelector(".about-monthAr");
 let time = 0;
 let timeFuctionallity = true;
 let voiceSound = true;
+let activate = true;
 
 const allWindowActivitiesAdded = () => {
   const openWindow = () => {
     windowCard.classList.remove("hidden");
-    overlayCheck.classList.remove("hidden");
+    // overlayCheck.classList.remove("hidden");
+    appBody.classList.add("hidden");
   };
   const closeWidow = () => {
     windowCard.classList.add("hidden");
-    overlayCheck.classList.add("hidden");
+    appBody.classList.remove("hidden");
+    // overlayCheck.classList.add("hidden");
   };
   const useOverlayClose = () => {
     windowCard.classList.add("hidden");
@@ -343,10 +345,20 @@ const allWindowActivitiesAdded = () => {
   });
 };
 allWindowActivitiesAdded();
+const form = {
+  hour: "numeric",
+  minute: "numeric",
+  day: "numeric",
+  month: "long",
+  year: "numeric",
+};
 
 function getCuurrentDate() {
   const now = new Date();
-  internationalTime.textContent = new Intl.DateTimeFormat().format(now);
+  internationalTime.textContent = new Intl.DateTimeFormat("en-EA", form).format(
+    now
+  );
+  arabicDate.textContent = new Intl.DateTimeFormat("ar-SY").format(now);
 }
 getCuurrentDate();
 
@@ -680,42 +692,56 @@ function getCurrentTimeCompletedFuctionallity() {
   }, 1000);
 }
 getCurrentTimeCompletedFuctionallity();
-const btnFullAdhan = document.querySelectorAll(".full-adhan");
+const btnFullAdhan = document.querySelector(".full-adhan");
 const btnshortAdhan = document.querySelector(".short-adhan");
+const btnActivatAdhan = document.querySelector(".activate-adhan");
+const btnActivatMessage = document.querySelector(".activate-message");
 NoteMsg2.classList.add("hidden");
 
 btnCancel.forEach((el) => {
   el.addEventListener("click", () => {
-    timeFuctionallity = false;
+    timeFuctionallity = true;
   });
 });
 const contents = [
   "Allahu akbar allahu akbar allahu akbar allahu akbar ",
   "Allahu akbar allahu akbar allahu akbar allahu akbar ashhadu allah illaha illah llah ashhadu allah illaha illah llah",
 ];
-
+btnActivatAdhan.addEventListener("click", function () {
+  activate = false;
+});
 const voice1 = contents[0];
 const voice2 = contents[1];
-btnFullAdhan.forEach((el) =>
-  el.addEventListener("click", function () {
-    voiceSound = false;
-  })
-);
+
+btnFullAdhan.addEventListener("click", function () {
+  voiceSound = false;
+});
+
 btnshortAdhan.addEventListener("click", function () {
   voiceSound = true;
 });
+
 function speek1(speaked) {
-  if (voiceSound) {
+  if (voiceSound && activate) {
     let speakedWords = new SpeechSynthesisUtterance(speaked);
     speechSynthesis.speak(speakedWords);
   }
 }
 function speek2(speaked) {
-  if (!voiceSound) {
+  if (!voiceSound && activate) {
     let speakedWords = new SpeechSynthesisUtterance(speaked);
     speechSynthesis.speak(speakedWords);
   }
 }
+function delM(del) {
+  del.classList.add("hidden");
+}
+NoteMsg.addEventListener("click", function () {
+  delM(NoteMsg);
+});
+NoteMsg2.addEventListener("click", function () {
+  delM(NoteMsg2);
+});
 const aboutReminderCellAllFunctionallityFinished = function () {
   let FirstTime = 3600;
   let secTime = 3600;
@@ -733,12 +759,14 @@ const aboutReminderCellAllFunctionallityFinished = function () {
     let hour = String(Math.trunc(minutesCount / 60)).padStart(2, 0);
     let secondsCount = String(Math.trunc(time % 60)).padStart(2, 0);
     timeLeft.textContent = `${hour}:${minutesCount}:${secondsCount}`;
-    fullNoteMsg.forEach((el) =>
-      el.addEventListener("click", () => {
-        NoteMsg.classList.add("hidden");
-        NoteMsg2.classList.remove("hidden");
-      })
-    );
+    fullNoteMsg.addEventListener("click", () => {
+      NoteMsg.classList.add("hidden");
+      NoteMsg2.classList.remove("hidden");
+    });
+    btnActivatMessage.addEventListener("click", function () {
+      NoteMsg.classList.add("hidden");
+      NoteMsg2.classList.add("hidden");
+    });
 
     if (time < 1) {
       clearInterval(clearedFuction);
@@ -747,7 +775,6 @@ const aboutReminderCellAllFunctionallityFinished = function () {
       NoteMsg2.textContent = message[1];
       speek1(voice1);
       speek2(voice2);
-      NoteMsg.style.backgroundColor = "red";
     }
   }
 

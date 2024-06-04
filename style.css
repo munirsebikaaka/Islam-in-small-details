@@ -16,6 +16,7 @@ body {
   --shadow-color: #000000a9;
   --dhikar-btn-background-color: #fff4df;
   --box-shadow: #00000048;
+  --settings-color: #686868;
 }
 .main-head,
 .close-tool,
@@ -62,7 +63,9 @@ body {
 .salah-name,
 .step-cell,
 .dont-close-btn,
-.mints {
+.mints,
+.short-full,
+.notes {
   background-color: var(--terciary-color);
 }
 .name,
@@ -90,7 +93,8 @@ body {
 .salah-head,
 .arabic-translation,
 .salah-head-arabic,
-.namaz {
+.namaz,
+.notes {
   font-size: 1.4rem;
 }
 .about-Allah-names-cell,
@@ -110,7 +114,9 @@ body {
 .save-settings,
 .inside-cell,
 .set-btn-default,
-.appset-cell1 {
+.appset-cell1,
+.step-cell,
+.notes {
   border-radius: 11px;
 }
 
@@ -154,7 +160,11 @@ body {
 .arabic-translation {
   color: var(--primary-color);
 }
-
+.notes {
+  text-align: center;
+  padding: 5px;
+  color: var(--settings-color);
+}
 .card-discription,
 .pro-pal,
 .pro-head {
@@ -179,14 +189,14 @@ body {
   border-radius: 25px;
   padding: 5px 20px;
 }
+.card-dis {
+  display: flex;
+  flex-direction: column;
+}
 .pro-section {
-  max-width: 760px;
-  position: absolute;
-  top: 40%;
-  left: 40%;
-  transform: translate(-30%, -10%);
-  padding: 40px;
-  border-radius: 5px;
+  max-width: 100%;
+  height: 100vh;
+  margin: 20px auto;
   z-index: 10;
 }
 .hidden {
@@ -199,8 +209,6 @@ body {
   width: 100%;
   height: 100%;
   background-color: #00000099;
-  /* backdrop-filter: blur(3px); */
-  /* z-index: 5; */
   height: 120vh;
 }
 
@@ -614,7 +622,7 @@ em {
   padding: 10px;
   margin-bottom: 90px;
 }
-.more-settings,
+
 .aboutapp-set {
   display: flex;
   flex-direction: column;
@@ -627,16 +635,39 @@ em {
 .app-setting-bac {
   background-color: #faf8f8;
 }
+.short-full-cell,
+.namaz {
+  border-bottom: 1px solid var(--box-shadow);
+  padding: 10px;
+  font-weight: 400;
+}
 .namaz {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px;
-  border-bottom: 1px solid var(--box-shadow);
+  color: var(--settings-color);
 }
 .set-btn-default {
   color: var(--terciary-color);
   margin-left: 20px;
+}
+.set-btn-default:active {
+  transform: translateY(2px);
+}
+.short-full {
+  font-size: 1rem;
+  color: var(--settings-color);
+}
+.more-settings {
+  padding: 7px;
+}
+.more {
+  font-size: 1.2rem;
+  color: var(--settings-color);
+  margin: 20px;
+  /* border: 1px solid red; */
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--box-shadow);
 }
 /* SALAH LEARNIG */
 .all-steps {
@@ -653,6 +684,7 @@ em {
   height: 50rem;
   transition: transform 1s;
   overflow: hidden;
+  /* padding: 5px; */
 }
 
 .action-image {
@@ -707,12 +739,10 @@ em {
 }
 .inside-cell {
   width: 400px;
-  margin: 0 auto;
+  margin: 30px auto;
   display: flex;
   align-items: center;
   justify-content: space-around;
   flex-direction: column;
-  /* border: 1px solid red; */
   padding: 10px;
-  /* background-color: red; */
 }
