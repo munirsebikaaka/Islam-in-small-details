@@ -346,8 +346,6 @@ const allWindowActivitiesAdded = () => {
 };
 allWindowActivitiesAdded();
 const form = {
-  hour: "numeric",
-  minute: "numeric",
   day: "numeric",
   month: "long",
   year: "numeric",
@@ -480,7 +478,7 @@ const salahCellFunc = (obj) => {
     const times = obj.timesPerSalah[i];
     const getHtmlStructureOfSalah = `
     <div class="getSalahALL">
-    <p class="icon"><ion-icon name="sunny"></ion-icon>
+    <p class="sala-icon"><ion-icon name="sunny"></ion-icon>
     </p>
     <div class="salah-cells">
       <button class="btn salah-name">${el}</button>
@@ -536,9 +534,10 @@ const completedWorkingWithClassesFuctionallity = () => {
     addClass.classList.add("hidden");
     removeClass.classList.remove("hidden");
   }
-  closeSalahLearning.addEventListener("click", function () {
-    workingWithClassesADD(salahLearningCell, appBody);
-  });
+  closeSalahLearning.addEventListener(
+    "click",
+    workingWithClassesADD.bind(salahLearningCell, appBody)
+  );
   btnSalahLearning.addEventListener("click", function () {
     workingWithClassesADD(appBody, salahLearningCell);
   });
