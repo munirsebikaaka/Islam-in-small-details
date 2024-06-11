@@ -404,7 +404,7 @@ const savedDhikarList = () => {
               <li class="saved-dhikar-list-element">
                 <p class="el-list-dhikar">${dhikar}</p>
                 <p class="times-per-dhikar">${inputDhikar.value}</p>
-                <button class="btn delete-list-el" onclick="deleteSavedDhikar('${controlBodyApp.inputDhikarUl}', '${dhikar}')">Delete</button>
+                <button class="btn delete-list-el" onclick="deleteSavedDhikar('${controlBodyApp.inputDhikarUl}', '${dhikar}')"><ion-icon name="trash" class="delete-icon"></ion-icon></button>
               </li>
   
   `;
@@ -419,7 +419,7 @@ function updateUI(arr, ulEL) {
   <li class="saved-dhikar-list-element">
                 <p class="el-list-dhikar">${dhikar}</p>
                 <p class="times-per-dhikar">${inputDhikar.value}</p>
-                <button class="btn delete-list-el" onclick="deleteSavedDhikar('${controlBodyApp.inputDhikarUl}', '${dhikar}')">Delete</button>
+                <button class="btn delete-list-el" onclick="deleteSavedDhikar('${controlBodyApp.inputDhikarUl}', '${dhikar}')"><ion-icon name="trash" class="delete-icon"></ion-icon></button>
               </li>
   
   `;
@@ -534,10 +534,10 @@ const completedWorkingWithClassesFuctionallity = () => {
     addClass.classList.add("hidden");
     removeClass.classList.remove("hidden");
   }
-  closeSalahLearning.addEventListener(
-    "click",
-    workingWithClassesADD.bind(salahLearningCell, appBody)
-  );
+  closeSalahLearning.addEventListener("click", function () {
+    console.log("yah");
+    workingWithClassesADD(salahLearningCell, appBody);
+  });
   btnSalahLearning.addEventListener("click", function () {
     workingWithClassesADD(appBody, salahLearningCell);
   });
