@@ -95,7 +95,8 @@ body {
 .arabic-translation,
 .salah-head-arabic,
 .namaz,
-.notes {
+.notes,
+.comfarmation-message {
   font-size: 1.4rem;
 }
 .about-Allah-names-cell,
@@ -313,7 +314,6 @@ em {
   align-items: center;
   justify-content: space-around;
   gap: 10px;
-  /* text-align: center; */
   padding: 10px;
   background-color: var(--terciary-colorBack);
   border-radius: 11px;
@@ -333,7 +333,6 @@ em {
   display: flex;
   align-self: center;
   justify-self: center;
-  /* border: 1px solid red; */
 }
 
 .body-icon {
@@ -355,9 +354,7 @@ em {
 .app-name {
   font-weight: 500;
 }
-/* .invisible {
-  display: none;
-} */
+
 /* MAIN BODY  section Allah names*/
 
 .Allah-prophet-names,
@@ -516,6 +513,9 @@ em {
 .delete-icon {
   font-size: 30px;
   color: var(--primary-color);
+}
+.comfarmation-message {
+  color: var(--terciary-color);
 }
 /* kalma-reading */
 
@@ -686,7 +686,6 @@ em {
   font-size: 1.2rem;
   color: var(--settings-color);
   margin: 20px;
-  /* border: 1px solid red; */
   padding-bottom: 10px;
   border-bottom: 1px solid var(--box-shadow);
 }
@@ -705,7 +704,6 @@ em {
   height: 50rem;
   transition: transform 1s;
   overflow: hidden;
-  /* padding: 5px; */
 }
 
 .action-image {
@@ -766,4 +764,34 @@ em {
   justify-content: space-around;
   flex-direction: column;
   padding: 10px;
+}
+/* THE DOTS IN THE APP */
+.dots {
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+}
+
+.dots__dot {
+  border: none;
+  background-color: #b9b9b9;
+  opacity: 0.7;
+  height: 1rem;
+  width: 1rem;
+  border-radius: 50%;
+  margin-right: 1.75rem;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.dots__dot:last-child {
+  margin: 0;
+}
+
+.dots__dot--active {
+  /* background-color: #fff; */
+  background-color: #888;
+  opacity: 1;
 }

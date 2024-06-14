@@ -395,10 +395,13 @@ const allDhikar = (obj) => {
   });
 };
 allDhikar(typesOfDhikar);
+const timesOfSaying = [...inputDhikar.value];
 
 const savedDhikarList = () => {
+  console.log(timesOfSaying);
   let elementBody = inputDhikarSaved;
   const dhikar = elementBody.value;
+  console.log("dhikar", dhikar);
   typesOfDhikar.savedDhikar.saved.push(dhikar);
   inputDhikarSavedIdUl.innerHTML += `
               <li class="saved-dhikar-list-element">
@@ -408,9 +411,11 @@ const savedDhikarList = () => {
               </li>
   
   `;
+  confarmationMsg.textContent = `Your dhikar ${dhikar} has been saved`;
+
   elementBody.value = "";
 };
-
+const confarmationMsg = document.querySelector(".comfarmation-message");
 function updateUI(arr, ulEL) {
   let deletedUl = document.querySelector(ulEL);
   deletedUl.innerHTML = "";
@@ -418,7 +423,7 @@ function updateUI(arr, ulEL) {
     deletedUl.innerHTML += `
   <li class="saved-dhikar-list-element">
                 <p class="el-list-dhikar">${dhikar}</p>
-                <p class="times-per-dhikar">${inputDhikar.value}</p>
+                <p class="times-per-dhikar"></p>
                 <button class="btn delete-list-el" onclick="deleteSavedDhikar('${controlBodyApp.inputDhikarUl}', '${dhikar}')"><ion-icon name="trash" class="delete-icon"></ion-icon></button>
               </li>
   
@@ -426,21 +431,26 @@ function updateUI(arr, ulEL) {
   });
 }
 
+let setToClear;
 document.querySelector(".save-inputs ").addEventListener("click", function () {
   savedDhikarList();
+  setToClear = setInterval(function () {
+    savedDhikarCell.classList.add("hidden");
+    tasmeeCounterHead.classList.remove("hidden");
+  }, 1000);
 });
-savedDhikarList();
+
 function deleteSavedDhikar(ulElement, dhikar) {
   if (ulElement === controlBodyApp.inputDhikarUl) {
     const index = typesOfDhikar.savedDhikar.saved.indexOf(dhikar);
-    console.log(index);
     typesOfDhikar.savedDhikar.saved.splice(index, 1);
+    timesOfSaying.push(inputDhikar.value);
     updateUI(typesOfDhikar.savedDhikar.saved, controlBodyApp.inputDhikarUl);
   }
 }
 
 const makeKalmaPage = () => {
-  kalmaReading.position.flatMap((el, i) => {
+  kalmaReading.position.forEach((el, i) => {
     const translation = kalmaReading.inEng[i];
     const kalmaHTMLStructure = `
     <div class="all-kalma-readings">
@@ -508,8 +518,6 @@ document.querySelectorAll(".add-salah-func").forEach((el) =>
     if (e.target.classList.contains("dont-close")) {
       salahSettings.classList.add("hidden");
       overlayCheck.classList.add("hidden");
-
-      console.log(e.target);
     }
   })
 );
@@ -527,17 +535,18 @@ function chooseTime(obj) {
   });
 }
 chooseTime(salahObj.minutes);
-/////////////////////////////////////////////////////
+
 const completedWorkingWithClassesFuctionallity = () => {
   const sectionNames = document.querySelector(".setion-names");
   function workingWithClassesADD(addClass, removeClass) {
     addClass.classList.add("hidden");
     removeClass.classList.remove("hidden");
   }
+
   closeSalahLearning.addEventListener("click", function () {
-    console.log("yah");
     workingWithClassesADD(salahLearningCell, appBody);
   });
+
   btnSalahLearning.addEventListener("click", function () {
     workingWithClassesADD(appBody, salahLearningCell);
   });
@@ -550,6 +559,7 @@ const completedWorkingWithClassesFuctionallity = () => {
   });
   btnAllDhikarTogether.addEventListener("click", function () {
     workingWithClassesADD(tasmeeCounterHead, insideDhikar);
+    clearInterval(setToClear);
   });
   btnCloseSalah.addEventListener("click", function () {
     workingWithClassesADD(salahTimeAndTons, appBody);
@@ -566,6 +576,8 @@ const completedWorkingWithClassesFuctionallity = () => {
 
   btnDhikarSave.addEventListener("click", function () {
     workingWithClassesADD(tasmeeCounterHead, savedDhikarCell);
+    clearInterval(setToClear);
+    confarmationMsg.textContent = "";
   });
   cancelDhikar.addEventListener("click", function () {
     workingWithClassesADD(savedDhikarCell, tasmeeCounterHead);
@@ -574,20 +586,23 @@ const completedWorkingWithClassesFuctionallity = () => {
   openSalahCell.addEventListener("click", () => {
     workingWithClassesADD(appBody, salahTimeAndTons);
   });
-  //////
+
   btnOpenKalmaReadin.addEventListener("click", function () {
     workingWithClassesADD(appBody, allKalmaReadingCell);
   });
+
   btnCloseKalma.addEventListener("click", function () {
     workingWithClassesADD(allKalmaReadingCell, appBody);
   });
+
   btnAbaoutNames.addEventListener("click", () => {
     workingWithClassesADD(appBody, sectionNames);
   });
+
   btnCloseNames.addEventListener("click", function () {
     workingWithClassesADD(sectionNames, appBody);
   });
-  ///////
+
   btnOpenTasmeeCounter.addEventListener("click", function () {
     workingWithClassesADD(appBody, tasmeeCounterBody);
   });
@@ -597,10 +612,6 @@ const completedWorkingWithClassesFuctionallity = () => {
   TimeCell.addEventListener("click", function () {
     TimeCell.classList.add("hidden");
   });
-  console.log("unfished", TimeCell.textContent);
-  // closeTime.addEventListener("click", function () {
-  //   x.classList.add("hidden");
-  // });
 };
 completedWorkingWithClassesFuctionallity();
 
@@ -691,6 +702,7 @@ function getCurrentTimeCompletedFuctionallity() {
   }, 1000);
 }
 getCurrentTimeCompletedFuctionallity();
+
 const btnFullAdhan = document.querySelector(".full-adhan");
 const btnshortAdhan = document.querySelector(".short-adhan");
 const btnActivatAdhan = document.querySelector(".activate-adhan");
@@ -699,18 +711,20 @@ NoteMsg2.classList.add("hidden");
 
 btnCancel.forEach((el) => {
   el.addEventListener("click", () => {
-    timeFuctionallity = true;
+    timeFuctionallity = false;
   });
 });
+
 const contents = [
   "Allahu akbar allahu akbar allahu akbar allahu akbar ",
   "Allahu akbar allahu akbar allahu akbar allahu akbar ashhadu allah illaha illah llah ashhadu allah illaha illah llah",
 ];
+const voice1 = contents[0];
+const voice2 = contents[1];
+
 btnActivatAdhan.addEventListener("click", function () {
   activate = false;
 });
-const voice1 = contents[0];
-const voice2 = contents[1];
 
 btnFullAdhan.addEventListener("click", function () {
   voiceSound = false;
@@ -758,6 +772,7 @@ const aboutReminderCellAllFunctionallityFinished = function () {
     let hour = String(Math.trunc(minutesCount / 60)).padStart(2, 0);
     let secondsCount = String(Math.trunc(time % 60)).padStart(2, 0);
     timeLeft.textContent = `${hour}:${minutesCount}:${secondsCount}`;
+
     fullNoteMsg.addEventListener("click", () => {
       NoteMsg.classList.add("hidden");
       NoteMsg2.classList.remove("hidden");
@@ -852,30 +867,53 @@ const aboutReminderCellAllFunctionallityFinished = function () {
 aboutReminderCellAllFunctionallityFinished();
 
 function completeTheSliderCellFunctuion() {
-  steps.forEach((step, i) => {
-    step.style.transform = `translateX(${100 * i}%)`;
-  });
+  const dotsCell = document.querySelector(".dots");
+  const createDots = function () {
+    steps.forEach((s, i) =>
+      dotsCell.insertAdjacentHTML(
+        "beforeend",
+        `<button class="dots__dot" data-steps='${i}'></button>
+      `
+      )
+    );
+  };
+  createDots();
   let curValue = 0;
   let maxLength = steps.length - 1;
-
-  btnRight.addEventListener("click", function () {
+  function workWithSliders(slides) {
+    steps.forEach((step, i) => {
+      step.style.transform = `translateX(${100 * (i - slides)}%)`;
+    });
+  }
+  workWithSliders(0);
+  function rightSlide() {
     if (curValue === maxLength) {
       curValue = 0;
     }
     curValue++;
-    steps.forEach((step, i) => {
-      step.style.transform = `translateX(${100 * (i - curValue)}%)`;
-    });
-  });
-  btnLeft.addEventListener("click", function () {
+
+    workWithSliders(curValue);
+  }
+  function leftSlide() {
     if (curValue === 0) {
       curValue = maxLength;
     } else {
       curValue--;
     }
-    steps.forEach((step, i) => {
-      step.style.transform = `translateX(${100 * (i - curValue)}%)`;
-    });
+
+    workWithSliders(curValue);
+  }
+  const t = (target) => {
+    if (target.classList.contains("dots__dot")) {
+      const steps = target.dataset.steps;
+      workWithSliders(steps);
+    }
+  };
+
+  dotsCell.addEventListener("click", function (e) {
+    t(e.target);
   });
+  btnRight.addEventListener("click", rightSlide);
+  btnLeft.addEventListener("click", leftSlide);
 }
 completeTheSliderCellFunctuion();
