@@ -445,7 +445,7 @@ function deleteSavedDhikar(ulElement, dhikar) {
     const index = typesOfDhikar.savedDhikar.saved.indexOf(dhikar);
     typesOfDhikar.savedDhikar.saved.splice(index, 1);
     timesOfSaying.push(inputDhikar.value);
-    updateUI(typesOfDhikar.savedDhikar.saved, controlBodyApp.inputDhikarUl);
+    // updateUI(typesOfDhikar.savedDhikar.saved, controlBodyApp.inputDhikarUl);
   }
 }
 
